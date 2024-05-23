@@ -13,6 +13,7 @@ import './global.css';
 
 import { HelmetProvider } from 'react-helmet-async';
 import { MantineProvider } from '@mantine/core';
+import { NavigationProgress } from '@mantine/nprogress';
 
 import { Router } from '@/routes/router';
 import { theme } from '@/theme';
@@ -21,6 +22,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <MantineProvider theme={theme}>
+        <NavigationProgress />
         <Router />
       </MantineProvider>
     </HelmetProvider>

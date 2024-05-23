@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
-import { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode, useEffect } from 'react';
 import { Box, BoxProps } from '@mantine/core';
+import { nprogress } from '@mantine/nprogress';
 
 interface PageProps extends BoxProps {
   children: ReactNode;
@@ -8,16 +9,23 @@ interface PageProps extends BoxProps {
   title: string;
 }
 export const Page = forwardRef<HTMLDivElement, PageProps>(
-  ({ children, title = '', meta, ...other }, ref) => (
-    <>
-      <Helmet>
-        <title>{`${title} | Mantine Dashboard`}</title>
-        {meta}
-      </Helmet>
+  ({ children, title = '', meta, ...other }, ref) => {
+    useEffect(() => {
+      nprogress.complete();
+      return nprogress.start;
+    }, []);
 
-      <Box ref={ref} {...other}>
-        {children}
-      </Box>
-    </>
-  )
+    return (
+      <>
+        <Helmet>
+          <title>{`${title} | Mantine Dashboard`}</title>
+          {meta}
+        </Helmet>
+
+        <Box ref={ref} {...other}>
+          {children}
+        </Box>
+      </>
+    );
+  }
 );
