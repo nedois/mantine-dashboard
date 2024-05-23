@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
+import { Group } from '@mantine/core';
 
 import { StickyHeader } from '@/components/sticky-header';
 import { Logo } from '@/components/logo';
 import { SidebarButton } from './sidebar-button';
 import { SearchButton } from './search-button';
-import classes from './header.module.css';
 import { ColorSchemeToggler } from './color-scheme-toggler';
+import { CurrentUser } from './current-user';
+import classes from './header.module.css';
 
 export function Header() {
   return (
@@ -17,9 +19,11 @@ export function Header() {
         </Link>
         <SearchButton />
       </div>
-      <div className={classes.leftContent}>
+
+      <Group ml="auto">
         <ColorSchemeToggler />
-      </div>
+        <CurrentUser />
+      </Group>
     </StickyHeader>
   );
 }

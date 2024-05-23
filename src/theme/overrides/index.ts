@@ -4,6 +4,7 @@ import buttons from './buttons';
 import drawer from './drawer';
 import inputs from './inputs';
 import loadingOverlay from './loading-overlay';
+import menu from './menu';
 import tooltip from './tooltip';
 
 export default {
@@ -13,5 +14,6 @@ export default {
   ...drawer,
   ...inputs,
   ...loadingOverlay,
+  ...menu,
   ...tooltip,
 };

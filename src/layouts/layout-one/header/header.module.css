@@ -24,23 +24,6 @@
   align-items: center;
 }
 
-.leftContent {
-  margin-inline-start: auto;
-  flex-shrink: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: center;
-  gap: 0.5rem;
-
-  @media (min-width: $mantine-breakpoint-xs) {
-    gap: 0.75rem;
-  }
-
-  @media (min-width: $mantine-breakpoint-xl) {
-    gap: 1rem;
-  }
-}
-
 .logo {
   margin-inline-end: 1rem;
   width: 2.25rem;
