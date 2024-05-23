@@ -1,10 +1,15 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage } from './pages/Home.page';
+import { HomePage } from './pages/home.page';
+import { LayoutOne } from '@/layouts/layout-one';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
+    element: (
+      <LayoutOne>
+        <HomePage />
+      </LayoutOne>
+    ),
   },
 ]);
 

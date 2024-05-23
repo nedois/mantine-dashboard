@@ -1,0 +1,27 @@
+.root {
+  position: sticky;
+  top: 0;
+  z-index: 199;
+  display: flex;
+  align-items: center;
+  background-color: light-dark(rgb(255 255 255 / 0.8), rgb(36 36 36 / 0.5));
+  padding: var(--mantine-spacing-md);
+
+  backdrop-filter: blur(24px);
+
+  @media (min-width: $mantine-breakpoint-md) {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: $mantine-breakpoint-lg) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  &[data-sticked='true'] {
+    box-shadow:
+      0px 1px 0 rgba(0, 0, 0, 0.02),
+      0px 2px 6px rgba(0, 0, 0, 0.05);
+  }
+}
