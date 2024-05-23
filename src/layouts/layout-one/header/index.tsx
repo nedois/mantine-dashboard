@@ -7,6 +7,7 @@ import { SidebarButton } from './sidebar-button';
 import { SearchButton } from './search-button';
 import { ColorSchemeToggler } from './color-scheme-toggler';
 import { CurrentUser } from './current-user';
+import { Notifications } from './notifications';
 import classes from './header.module.css';
 
 export function Header() {
@@ -22,6 +23,7 @@ export function Header() {
 
       <Group ml="auto">
         <ColorSchemeToggler />
+        <Notifications />
         <CurrentUser />
       </Group>
     </StickyHeader>

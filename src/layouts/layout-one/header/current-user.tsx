@@ -21,7 +21,9 @@ export function CurrentUser(props: CurrentUserProps) {
           alt="Current user"
           {...props}
           style={{ cursor: 'pointer', ...props.style }}
-        />
+        >
+          JD
+        </Avatar>
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item leftSection={<PiHeartDuotone size="1rem" color="var(--mantine-color-red-6)" />}>
