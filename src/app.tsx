@@ -11,14 +11,18 @@ import '@mantine/charts/styles.layer.css';
 import 'mantine-datatable/styles.layer.css';
 import './global.css';
 
+import { HelmetProvider } from 'react-helmet-async';
 import { MantineProvider } from '@mantine/core';
+
 import { Router } from './router';
 import { theme } from './theme';
 
 export default function App() {
   return (
-    <MantineProvider theme={theme}>
-      <Router />
-    </MantineProvider>
+    <HelmetProvider>
+      <MantineProvider theme={theme}>
+        <Router />
+      </MantineProvider>
+    </HelmetProvider>
   );
 }

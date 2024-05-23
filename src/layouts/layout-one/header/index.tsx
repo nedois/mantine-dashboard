@@ -5,6 +5,7 @@ import { Logo } from '@/components/logo';
 import { SidebarButton } from './sidebar-button';
 import { SearchButton } from './search-button';
 import classes from './header.module.css';
+import { ColorSchemeToggler } from './color-scheme-toggler';
 
 export function Header() {
   return (
@@ -16,7 +17,9 @@ export function Header() {
         </Link>
         <SearchButton />
       </div>
-      <div className={classes.leftContent}></div>
+      <div className={classes.leftContent}>
+        <ColorSchemeToggler />
+      </div>
     </StickyHeader>
   );
 }

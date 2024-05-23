@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage } from './pages/home.page';
+
 import { LayoutOne } from '@/layouts/layout-one';
+import { HomePage } from './pages/home';
 
 const router = createBrowserRouter([
   {
