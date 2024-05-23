@@ -14,8 +14,8 @@ import './global.css';
 import { HelmetProvider } from 'react-helmet-async';
 import { MantineProvider } from '@mantine/core';
 
-import { Router } from './router';
-import { theme } from './theme';
+import { Router } from '@/routes/router';
+import { theme } from '@/theme';
 
 export default function App() {
   return (

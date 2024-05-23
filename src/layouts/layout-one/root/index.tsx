@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 import { Paper, ScrollArea } from '@mantine/core';
 
 import { Logo } from '@/components/logo';
@@ -6,14 +6,10 @@ import { Header } from '../header';
 import { Sidebar } from '../sidebar';
 import classes from './root.module.css';
 
-interface LayoutOneProps {
-  children?: ReactNode;
-}
-
-export function LayoutOne({ children }: LayoutOneProps) {
+export function LayoutOne() {
   return (
     <div className={classes.root}>
-      <Paper className={classes.sidebarWrapper}>
+      <Paper className={classes.sidebarWrapper} withBorder>
         <div className={classes.logoWrapper}>
           <Logo w="3rem" />
         </div>
@@ -23,7 +19,10 @@ export function LayoutOne({ children }: LayoutOneProps) {
       </Paper>
       <div className={classes.content}>
         <Header />
-        <main className={classes.main}>{children}</main>
+        <main className={classes.main}>
+          {' '}
+          <Outlet />
+        </main>
       </div>
     </div>
   );
