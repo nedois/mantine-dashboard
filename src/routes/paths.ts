@@ -17,6 +17,7 @@ export const routes = {
       root: '/dashboard/widgets',
       metrics: '/dashboard/widgets/metrics',
       charts: '/dashboard/widgets/charts',
+      tables: '/dashboard/widgets/tables',
     },
   },
 };

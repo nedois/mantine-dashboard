@@ -7,6 +7,7 @@ import {
   PiUserPlusDuotone,
   PiLockKeyDuotone,
   PiChatCenteredDotsDuotone,
+  PiTableDuotone,
 } from 'react-icons/pi';
 
 import { routes } from '@/routes/paths';
@@ -49,6 +50,11 @@ export const menu: MenuItem[] = [
         name: 'Metrics',
         href: routes.dashboard.widgets.metrics,
         icon: PiSquaresFourDuotone,
+      },
+      {
+        name: 'Tables',
+        href: routes.dashboard.widgets.tables,
+        icon: PiTableDuotone,
       },
     ],
   },

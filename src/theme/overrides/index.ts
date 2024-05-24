@@ -8,6 +8,7 @@ import inputs from './inputs';
 import loadingOverlay from './loading-overlay';
 import menu from './menu';
 import ringProgress from './ring-progress';
+import table from './table';
 import tooltip from './tooltip';
 
 export default {
@@ -21,5 +22,6 @@ export default {
   ...loadingOverlay,
   ...menu,
   ...ringProgress,
+  ...table,
   ...tooltip,
 };

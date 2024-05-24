@@ -69,7 +69,7 @@ const router = createBrowserRouter([
           {
             index: true,
             path: routes.dashboard.widgets.root,
-            element: <Navigate to={routes.dashboard.widgets.metrics} replace />,
+            element: <Navigate to={routes.dashboard.widgets.charts} replace />,
           },
           {
             path: routes.dashboard.widgets.metrics,
@@ -78,6 +78,10 @@ const router = createBrowserRouter([
           {
             path: routes.dashboard.widgets.charts,
             element: LazyPage(() => import('@/pages/dashboard/widgets/charts')),
+          },
+          {
+            path: routes.dashboard.widgets.tables,
+            element: LazyPage(() => import('@/pages/dashboard/widgets/tables')),
           },
         ],
       },
