@@ -21,7 +21,7 @@ export function Header() {
         <SearchButton />
       </div>
 
-      <Group ml="auto">
+      <Group>
         <ColorSchemeToggler />
         <Notifications />
         <CurrentUser />

@@ -1,5 +1,7 @@
 .root {
   z-index: 198;
+  display: flex;
+  justify-content: space-between;
 
   @media (min-width: $mantine-breakpoint-2xl) {
     padding-top: 1.25rem;
@@ -19,8 +21,6 @@
 
 .rightContent {
   display: flex;
-  width: 100%;
-  max-width: 42rem;
   align-items: center;
 }
 
