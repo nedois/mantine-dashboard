@@ -8,6 +8,7 @@ A simple beautiful dashboard! This project is built using [Mantine](https://mant
 
 - [Features](#features)
 - [Demo](#demo)
+- [Todo](#todo)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -25,6 +26,8 @@ A simple beautiful dashboard! This project is built using [Mantine](https://mant
 ## Demo
 
 Check out the live demo [here](https://your-demo-link.com).
+
+## Todo
 
 ## Installation
 
