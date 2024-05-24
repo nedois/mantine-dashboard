@@ -4,6 +4,7 @@ import { Page } from '@/components/page';
 import { PageHeader } from '@/components/page-header';
 import { routes } from '@/routes';
 import { SimpleTable } from './simple-table';
+import { AdvancedDataTable } from './advanced-data-table';
 
 const breadcrumbs = [
   { name: 'Dashboard', href: '/' },
@@ -11,7 +12,10 @@ const breadcrumbs = [
   { name: 'Tables' },
 ];
 
-const tables = [{ header: 'Simple Table', component: SimpleTable }];
+const tables = [
+  { header: 'Simple Table', component: SimpleTable },
+  { header: 'Advanced Data table', component: AdvancedDataTable },
+];
 
 export default function TablesPage() {
   return (

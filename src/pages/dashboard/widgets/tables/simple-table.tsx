@@ -1,6 +1,8 @@
-import { Table } from '@mantine/core';
+import { Group, Table } from '@mantine/core';
 
-import { TableWrapper } from '@/components/table-wrapper';
+import { TableContainer } from '@/components/table-container';
+import { ExportButton } from '@/components/export-button';
+import { AddButton } from '@/components/add-button';
 
 const data = [
   { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
@@ -12,7 +14,20 @@ const data = [
 
 export function SimpleTable() {
   return (
-    <TableWrapper>
+    <TableContainer
+      title="Common atoms"
+      description="Some random atomic elements."
+      actions={
+        <Group>
+          <AddButton variant="default" size="xs">
+            Add
+          </AddButton>
+          <ExportButton variant="default" size="xs">
+            Export
+          </ExportButton>
+        </Group>
+      }
+    >
       <Table>
         <Table.Thead>
           <Table.Tr>
@@ -33,6 +48,6 @@ export function SimpleTable() {
           ))}
         </Table.Tbody>
       </Table>
-    </TableWrapper>
+    </TableContainer>
   );
 }
