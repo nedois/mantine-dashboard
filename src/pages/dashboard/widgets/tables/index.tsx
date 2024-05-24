@@ -22,6 +22,7 @@ export default function TablesPage() {
         {tables.map(({ header, component: Component }) => (
           <Stack key={header}>
             <Title order={4}>{header}</Title>
+
             <Component />
           </Stack>
         ))}

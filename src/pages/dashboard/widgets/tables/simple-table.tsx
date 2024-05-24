@@ -1,5 +1,7 @@
 import { Table } from '@mantine/core';
 
+import { TableWrapper } from '@/components/table-wrapper';
+
 const data = [
   { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
   { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
@@ -10,26 +12,27 @@ const data = [
 
 export function SimpleTable() {
   return (
-    <Table>
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th>Element position</Table.Th>
-          <Table.Th>Element name</Table.Th>
-          <Table.Th>Symbol</Table.Th>
-          <Table.Th>Atomic mass</Table.Th>
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>
-        {data.map((row) => (
-          <Table.Tr key={row.name}>
-            <Table.Td>{row.position}</Table.Td>
-            <Table.Td>{row.name}</Table.Td>
-            <Table.Td>{row.symbol}</Table.Td>
-            <Table.Td>{row.mass}</Table.Td>
+    <TableWrapper>
+      <Table>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>Element position</Table.Th>
+            <Table.Th>Element name</Table.Th>
+            <Table.Th>Symbol</Table.Th>
+            <Table.Th>Atomic mass</Table.Th>
           </Table.Tr>
-        ))}
-      </Table.Tbody>
-      <Table.Caption>Some elements from periodic table</Table.Caption>
-    </Table>
+        </Table.Thead>
+        <Table.Tbody>
+          {data.map((row) => (
+            <Table.Tr key={row.name}>
+              <Table.Td>{row.position}</Table.Td>
+              <Table.Td>{row.name}</Table.Td>
+              <Table.Td>{row.symbol}</Table.Td>
+              <Table.Td>{row.mass}</Table.Td>
+            </Table.Tr>
+          ))}
+        </Table.Tbody>
+      </Table>
+    </TableWrapper>
   );
 }

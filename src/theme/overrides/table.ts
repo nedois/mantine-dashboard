@@ -4,7 +4,6 @@ export default {
   Table: Table.extend({
     defaultProps: {
       highlightOnHover: true,
-      withTableBorder: true,
     },
   }),
 };

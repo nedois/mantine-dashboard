@@ -3,8 +3,9 @@ import { createTheme } from '@mantine/core';
 import components from './overrides';
 
 export const theme = createTheme({
-  cursorType: 'pointer',
   components,
+  cursorType: 'pointer',
+  fontFamily: 'Inter, sans-serif',
   breakpoints: {
     xs: '30em',
     sm: '40em',
