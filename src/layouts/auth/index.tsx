@@ -33,15 +33,17 @@ export function AuthLayout() {
         p="4rem"
         bg="var(--mantine-color-default-hover)"
         display={{ base: 'none', lg: 'flex' }}
-        style={{ borderRadius: 'var(--mantine-radius-md)', flexDirection: 'column' }}
+        style={{ borderRadius: 'var(--mantine-radius-md)' }}
       >
-        <Title order={2}>The simplest way to manage your workspace.</Title>
-        <Text my="lg" c="dimmed">
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint velit officia
-          consequat duis.
-        </Text>
+        <Box maw="40rem">
+          <Title order={2}>The simplest way to manage your workspace.</Title>
+          <Text my="lg" c="dimmed">
+            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint velit officia
+            consequat duis.
+          </Text>
 
-        <Image src={demoImg} alt="Demo" />
+          <Image src={demoImg} alt="Demo" />
+        </Box>
       </Center>
     </SimpleGrid>
   );
