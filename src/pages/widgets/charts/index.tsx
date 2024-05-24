@@ -4,7 +4,7 @@ import { routes } from '@/routes/paths';
 
 const breadcrumbs = [
   { name: 'Dashboard', href: '/' },
-  { name: 'Widgets', href: routes.widgets.root },
+  { name: 'Widgets', href: routes.dashboard.widgets.root },
   { name: 'Charts' },
 ];
 

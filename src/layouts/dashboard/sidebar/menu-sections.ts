@@ -34,12 +34,12 @@ export const menu: MenuItem[] = [
     section: [
       {
         name: 'Charts',
-        href: routes.widgets.charts,
+        href: routes.dashboard.widgets.charts,
         icon: PiChartLineUpDuotone,
       },
       {
         name: 'Metrics',
-        href: routes.widgets.metrics,
+        href: routes.dashboard.widgets.metrics,
         icon: PiSquaresFourDuotone,
       },
     ],

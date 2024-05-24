@@ -18,7 +18,7 @@ import { formatCurrency, formatDecimal, formatInt, formatPercentage } from '@/ut
 
 const breadcrumbs = [
   { name: 'Dashboard', href: '/' },
-  { name: 'Widgets', href: routes.widgets.root },
+  { name: 'Widgets', href: routes.dashboard.widgets.root },
   { name: 'Metrics' },
 ];
 
@@ -336,7 +336,7 @@ export default function MetricsWidgets() {
                     w="2.50rem"
                     h="2.50rem"
                   >
-                    <PiFileTextDuotone size="60%" color="var(--mantine-color-orange-9" />
+                    <PiPulseDuotone size="60%" color="var(--mantine-color-orange-9" />
                   </MetricCard.Icon>
                   <div>
                     <MetricCard.TextMuted>Expense</MetricCard.TextMuted>
@@ -420,7 +420,7 @@ export default function MetricsWidgets() {
                     w="2.50rem"
                     h="2.50rem"
                   >
-                    <PiFileTextDuotone size="60%" color="var(--mantine-color-orange-9" />
+                    <PiPulseDuotone size="60%" color="var(--mantine-color-orange-9" />
                   </MetricCard.Icon>
                   <div>
                     <MetricCard.TextMuted>Expense</MetricCard.TextMuted>
@@ -504,7 +504,7 @@ export default function MetricsWidgets() {
                     w="2.50rem"
                     h="2.50rem"
                   >
-                    <PiFileTextDuotone size="60%" color="var(--mantine-color-orange-9" />
+                    <PiPulseDuotone size="60%" color="var(--mantine-color-orange-9" />
                   </MetricCard.Icon>
                   <div>
                     <MetricCard.TextMuted>Expense</MetricCard.TextMuted>
@@ -588,7 +588,7 @@ export default function MetricsWidgets() {
                     w="2.50rem"
                     h="2.50rem"
                   >
-                    <PiFileTextDuotone size="60%" color="var(--mantine-color-orange-9" />
+                    <PiPulseDuotone size="60%" color="var(--mantine-color-orange-9" />
                   </MetricCard.Icon>
                   <div>
                     <MetricCard.TextMuted>Expense</MetricCard.TextMuted>

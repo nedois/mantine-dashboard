@@ -6,7 +6,7 @@ import { Header } from '../header';
 import { Sidebar } from '../sidebar';
 import classes from './root.module.css';
 
-export function LayoutOne() {
+export function DashboardLayout() {
   return (
     <div className={classes.root}>
       <Paper className={classes.sidebarWrapper} withBorder>

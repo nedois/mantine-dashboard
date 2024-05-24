@@ -1,7 +1,10 @@
 export const routes = {
-  widgets: {
-    root: '/widgets',
-    metrics: '/widgets/metrics',
-    charts: '/widgets/charts',
+  dashboard: {
+    root: '/dashboard',
+    widgets: {
+      root: '/dashboard/widgets',
+      metrics: '/dashboard/widgets/metrics',
+      charts: '/dashboard/widgets/charts',
+    },
   },
 };
