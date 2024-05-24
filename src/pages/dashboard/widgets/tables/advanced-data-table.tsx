@@ -128,6 +128,8 @@ export function AdvancedDataTable() {
 
       <DataTable.Content
         page={1}
+        onPageChange={console.log}
+        onRecordsPerPageChange={console.log}
         recordsPerPage={10}
         recordsPerPageOptions={[5, 10, 30]}
         totalRecords={100}

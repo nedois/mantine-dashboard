@@ -36,7 +36,7 @@
     justify-content: center;
   }
 
-  & :global(.dot):before {
+  & :global(.dot)::before {
     content: '';
     display: inline-block;
     background-color: var(--mantine-color-dimmed);
@@ -45,7 +45,7 @@
     border-radius: 100%;
   }
 
-  &[data-active='true'] :global(.dot):before {
+  &[data-active='true'] :global(.dot)::before {
     background-color: var(--mantine-primary-color-filled);
     height: 0.4rem;
     width: 0.4rem;
