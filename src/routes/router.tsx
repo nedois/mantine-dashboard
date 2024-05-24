@@ -7,6 +7,10 @@ import { LazyPage } from './lazy-page';
 
 const router = createBrowserRouter([
   {
+    path: '/',
+    element: <Navigate to={routes.dashboard.root} replace />,
+  },
+  {
     path: routes.auth.root,
     element: <AuthLayout />,
     children: [
