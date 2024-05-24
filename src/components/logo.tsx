@@ -1,8 +1,12 @@
 import { Box, BoxProps, ElementProps } from '@mantine/core';
 
-type LogoProps = Omit<BoxProps, 'children' | 'ref'> & ElementProps<'svg', keyof BoxProps>;
+interface LogoProps
+  extends Omit<BoxProps, 'children' | 'ref'>,
+    ElementProps<'svg', keyof BoxProps> {
+  size?: string | number;
+}
 
-export function Logo(props: LogoProps) {
+export function Logo({ size, style, ...props }: LogoProps) {
   return (
     <Box
       component="svg"
@@ -13,6 +17,7 @@ export function Logo(props: LogoProps) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ width: size, height: size, ...style }}
       {...props}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />

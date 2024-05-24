@@ -3,6 +3,8 @@ import { forwardRef, ReactNode, useEffect } from 'react';
 import { Box, BoxProps } from '@mantine/core';
 import { nprogress } from '@mantine/nprogress';
 
+import { app } from '@/config';
+
 interface PageProps extends BoxProps {
   children: ReactNode;
   meta?: ReactNode;
@@ -18,7 +20,7 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
     return (
       <>
         <Helmet>
-          <title>{`${title} | Mantine Dashboard`}</title>
+          <title>{`${title} | ${app.name}`}</title>
           {meta}
         </Helmet>
 

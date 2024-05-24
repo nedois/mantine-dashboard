@@ -31,7 +31,7 @@ const barData = [
   { month: 'June', smartphones: 750, laptops: 600, tablets: 1000, watches: 120 },
 ];
 
-export default function MetricsWidgets() {
+export default function MetricsWidgetsPage() {
   return (
     <Page title="Metrics widgets">
       <PageHeader title="Metrics" breadcrumbs={breadcrumbs} />

@@ -8,7 +8,7 @@ const breadcrumbs = [
   { name: 'Charts' },
 ];
 
-export default function ChartsWidgets() {
+export default function ChartsWidgetsPage() {
   return (
     <Page title="Charts widgets">
       <PageHeader title="Charts" breadcrumbs={breadcrumbs} />
