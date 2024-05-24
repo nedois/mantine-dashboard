@@ -8,10 +8,11 @@ export interface CardTitleProps extends Omit<CardSectionProps, 'size' | 'c' | 'f
 }
 
 export const CardTitle = forwardRef<HTMLDivElement, CardTitleProps>(
-  ({ title, description, style, actions, ...props }, ref) => (
+  ({ title, description, style, actions, withBorder = true, ...props }, ref) => (
     <CardSection
       ref={ref}
       py="md"
+      withBorder={withBorder}
       inheritPadding
       style={{ ...style, borderTop: 'none' }}
       {...props}
