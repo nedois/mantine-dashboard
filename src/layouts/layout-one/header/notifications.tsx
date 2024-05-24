@@ -5,6 +5,7 @@ import {
   Button,
   Drawer,
   ElementProps,
+  Indicator,
   Tooltip,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -19,12 +20,23 @@ type NotificationsProps = Omit<ActionIconProps, 'children' | 'c' | 'onClick' | '
 export function Notifications(props: NotificationsProps) {
   const [opened, { open, close }] = useDisclosure(false);
 
+  const hasNewNotifications = true;
+
   return (
     <>
       <Tooltip label="Notifications">
-        <ActionIcon variant="transparent" c="inherit" onClick={open} {...props}>
-          <NotificationsIcon size="100%" />
-        </ActionIcon>
+        <Indicator
+          inline
+          withBorder
+          offset={6}
+          size={12}
+          processing={hasNewNotifications}
+          disabled={!hasNewNotifications}
+        >
+          <ActionIcon variant="transparent" c="inherit" onClick={open} {...props}>
+            <NotificationsIcon size="100%" />
+          </ActionIcon>
+        </Indicator>
       </Tooltip>
 
       <Drawer.Root position="right" opened={opened} onClose={close} size="380px">

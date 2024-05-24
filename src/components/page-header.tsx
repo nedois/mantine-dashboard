@@ -6,9 +6,16 @@ interface PageHeaderProps extends GroupProps, ElementProps<'header', keyof Group
   breadcrumbs?: { name: string; href?: string }[];
 }
 
-export function PageHeader({ children, title, breadcrumbs, className, ...props }: PageHeaderProps) {
+export function PageHeader({
+  children,
+  title,
+  breadcrumbs,
+  className,
+  mb = 'xl',
+  ...props
+}: PageHeaderProps) {
   return (
-    <Group component="header" justify="space-between" className={className} {...props}>
+    <Group component="header" justify="space-between" className={className} mb={mb} {...props}>
       <div>
         <Title component="h2" order={2}>
           {title}

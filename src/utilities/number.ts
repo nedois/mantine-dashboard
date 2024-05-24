@@ -1,5 +1,6 @@
 interface FormatterOptions {
   precision?: number;
+  full?: boolean;
   thousandSeparator?: string;
   decimalSeparator?: string;
   suffix?: string;
@@ -12,6 +13,7 @@ const defaultOptions: Required<FormatterOptions> = {
   decimalSeparator: '.',
   suffix: '',
   prefix: '',
+  full: true,
 };
 
 export function formatDecimal(value: number | string, options?: FormatterOptions): string {
@@ -47,10 +49,10 @@ export function formatPercentage(value: number | string, options?: FormatterOpti
 
 export function formatCurrency(
   value: number | string,
-  currency = ' USD',
+  currency = '$',
   options?: FormatterOptions
 ): string {
-  return formatDecimal(value, { ...options, suffix: currency });
+  return formatDecimal(value, { ...options, prefix: currency });
 }
 
 export function isNumber(value: unknown): value is number {
