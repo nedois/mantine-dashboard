@@ -25,7 +25,7 @@ A simple beautiful dashboard! This project is built using [Mantine](https://mant
 
 ## Demo
 
-Check out the live demo [here](https://your-demo-link.com).
+Check out the live demo [here](https://mantine-dashboard-eight.vercel.app).
 
 ## Todo
 
