@@ -2,6 +2,8 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
 import { DashboardLayout } from '@/layouts/dashboard';
 import { AuthLayout } from '@/layouts/auth';
+import { AuthGuard } from '@/guards/auth-guard';
+import { GuestGuard } from '@/guards/guest-guard';
 import { routes } from './paths';
 import { LazyPage } from './lazy-page';
 
@@ -12,7 +14,11 @@ const router = createBrowserRouter([
   },
   {
     path: routes.auth.root,
-    element: <AuthLayout />,
+    element: (
+      <GuestGuard>
+        <AuthLayout />
+      </GuestGuard>
+    ),
     children: [
       {
         index: true,
@@ -51,7 +57,11 @@ const router = createBrowserRouter([
   },
   {
     path: routes.dashboard.root,
-    element: <DashboardLayout />,
+    element: (
+      <AuthGuard>
+        <DashboardLayout />
+      </AuthGuard>
+    ),
     children: [
       {
         index: true,
