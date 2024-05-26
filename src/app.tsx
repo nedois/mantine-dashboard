@@ -18,7 +18,7 @@ import { NavigationProgress } from '@mantine/nprogress';
 import { Router } from '@/routes/router';
 import { theme } from '@/theme';
 
-export default function App() {
+export function App() {
   return (
     <HelmetProvider>
       <MantineProvider theme={theme}>
