@@ -1,9 +1,12 @@
+import { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 import { GroupProps, ElementProps, Title, Breadcrumbs, Anchor, Text, Group } from '@mantine/core';
 
-interface PageHeaderProps extends GroupProps, ElementProps<'header', keyof GroupProps> {
-  title: string;
-  breadcrumbs?: { name: string; href?: string }[];
+interface PageHeaderProps
+  extends Omit<GroupProps, 'title'>,
+    ElementProps<'header', keyof GroupProps> {
+  title: ReactNode;
+  breadcrumbs?: { label: string; href?: string }[];
 }
 
 export function PageHeader({
@@ -30,14 +33,14 @@ export function PageHeader({
                   underline="never"
                   c="inherit"
                   component={NavLink}
-                  key={breadcrumb.name}
+                  key={breadcrumb.label}
                   to={breadcrumb.href}
                 >
-                  {breadcrumb.name}
+                  {breadcrumb.label}
                 </Anchor>
               ) : (
-                <Text key={breadcrumb.name} c="dimmed" fz="sm">
-                  {breadcrumb.name}
+                <Text key={breadcrumb.label} c="dimmed" fz="sm">
+                  {breadcrumb.label}
                 </Text>
               )
             )}

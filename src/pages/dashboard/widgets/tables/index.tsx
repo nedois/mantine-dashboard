@@ -7,9 +7,9 @@ import { SimpleTable } from './simple-table';
 import { AdvancedDataTable } from './advanced-data-table';
 
 const breadcrumbs = [
-  { name: 'Dashboard', href: '/' },
-  { name: 'Widgets', href: routes.dashboard.widgets.root },
-  { name: 'Tables' },
+  { label: 'Dashboard', href: '/' },
+  { label: 'Widgets', href: routes.dashboard.widgets.root },
+  { label: 'Tables' },
 ];
 
 const tables = [

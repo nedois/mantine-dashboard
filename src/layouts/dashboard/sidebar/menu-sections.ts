@@ -8,6 +8,7 @@ import {
   PiLockKeyDuotone,
   PiChatCenteredDotsDuotone,
   PiTableDuotone,
+  PiKanbanDuotone,
 } from 'react-icons/pi';
 
 import { routes } from '@/routes/paths';
@@ -34,6 +35,17 @@ export const menu: MenuItem[] = [
         name: 'Welcome',
         href: routes.dashboard.home,
         icon: PiStarDuotone,
+      },
+    ],
+  },
+
+  {
+    header: 'Apps',
+    section: [
+      {
+        name: 'Kanban',
+        href: routes.dashboard.apps.kanban,
+        icon: PiKanbanDuotone,
       },
     ],
   },

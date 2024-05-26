@@ -17,9 +17,9 @@ import { MetricCard } from '@/components/metric-card';
 import { formatCurrency, formatDecimal, formatInt, formatPercentage } from '@/utilities/number';
 
 const breadcrumbs = [
-  { name: 'Dashboard', href: '/' },
-  { name: 'Widgets', href: routes.dashboard.widgets.root },
-  { name: 'Metrics' },
+  { label: 'Dashboard', href: '/' },
+  { label: 'Widgets', href: routes.dashboard.widgets.root },
+  { label: 'Metrics' },
 ];
 
 const barData = [

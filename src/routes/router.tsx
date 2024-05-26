@@ -72,6 +72,21 @@ const router = createBrowserRouter([
         path: routes.dashboard.home,
         element: LazyPage(() => import('@/pages/dashboard/home')),
       },
+      /* ---------------------------------- APPS ---------------------------------- */
+      {
+        path: routes.dashboard.apps.root,
+        children: [
+          {
+            index: true,
+            path: routes.dashboard.apps.root,
+            element: <Navigate to={routes.dashboard.apps.kanban} replace />,
+          },
+          {
+            path: routes.dashboard.apps.kanban,
+            element: LazyPage(() => import('@/pages/dashboard/apps/kanban')),
+          },
+        ],
+      },
       /* --------------------------------- WIDGETS -------------------------------- */
       {
         path: routes.dashboard.widgets.root,

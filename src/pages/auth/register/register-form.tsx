@@ -20,7 +20,7 @@ interface RegisterFormProps extends Omit<StackProps, 'children'> {
 export function RegisterForm({ onSuccess, ...props }: RegisterFormProps) {
   return (
     <Stack {...props}>
-      <Group>
+      <Group grow>
         <TextInput label="First name" required />
         <TextInput label="Last name" required />
       </Group>

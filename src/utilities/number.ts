@@ -58,3 +58,7 @@ export function formatCurrency(
 export function isNumber(value: unknown): value is number {
   return typeof value === 'number' && !Number.isNaN(value);
 }
+
+export function randomInt({ min, max }: { min: number; max: number }) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
