@@ -7,7 +7,7 @@ import { DataTableFilter } from './data-table-filters';
 
 interface UseDataTableArgs<SortableFields> {
   tabsConfig?: DataTableTabsProps;
-  orderConfig: {
+  orderConfig?: {
     orderBy: DataTableSortStatus<SortableFields>['columnAccessor'];
     order: DataTableSortStatus<SortableFields>['direction'];
   };
@@ -20,8 +20,8 @@ export function useDataTable<SortableFields>({
   const [currentTab, setCurrentTab] = useState(tabsConfig?.tabs[0].value);
   const [filters, setFilters] = useState<Record<string, DataTableFilter>>({});
   const [sortStatus, setSortStatus] = useState<DataTableSortStatus<SortableFields>>({
-    columnAccessor: orderConfig.orderBy,
-    direction: orderConfig.order,
+    columnAccessor: orderConfig?.orderBy ?? '',
+    direction: orderConfig?.order ?? 'asc',
   });
 
   const handleTabChange = (value: string) => {
