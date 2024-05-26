@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { isAxiosError } from 'axios';
 import { z } from 'zod';
 import {
   useQuery,
@@ -75,6 +76,15 @@ function createUrl(
   return `${url}?${query.toString()}`;
 }
 
+/** Handle request errors */
+function handleRequestError(error: unknown) {
+  if (isAxiosError(error)) {
+    throw error.response?.data;
+  }
+
+  throw error;
+}
+
 /* ----------------------------------- GET ---------------------------------- */
 
 interface CreateGetQueryHookArgs<ResponseSchema extends z.ZodType> {
@@ -107,8 +117,10 @@ export function createGetQueryHook<
 >({ endpoint, responseSchema, rQueryParams }: CreateGetQueryHookArgs<ResponseSchema>) {
   const queryFn = async (params?: { query?: QueryParams; route?: RouteParams }) => {
     const url = createUrl(endpoint, params?.query, params?.route);
-    const response = await client.get(url);
-    return responseSchema.parse(response.data);
+    return client
+      .get(url)
+      .then((response) => responseSchema.parse(response.data))
+      .catch(handleRequestError);
   };
 
   return (params?: { query?: QueryParams; route?: RouteParams }) =>
@@ -175,8 +187,10 @@ export function createPostMutationHook<
       route?: RouteParams;
     }) => {
       const url = createUrl(baseUrl, query, route);
-      const response = await client.post(url, bodySchema.parse(variables));
-      return responseSchema.parse(response.data);
+      return client
+        .post(url, bodySchema.parse(variables))
+        .then((response) => responseSchema.parse(response.data))
+        .catch(handleRequestError);
     };
 
     return useMutation({
@@ -243,8 +257,10 @@ export function createPutMutationHook<
       route?: RouteParams;
     }) => {
       const url = createUrl(baseUrl, query, route);
-      const response = await client.put(url, bodySchema.parse(variables));
-      return responseSchema.parse(response.data);
+      return client
+        .put(url, bodySchema.parse(variables))
+        .then((response) => responseSchema.parse(response.data))
+        .catch(handleRequestError);
     };
 
     return useMutation({
@@ -305,8 +321,10 @@ export function createDeleteMutationHook<
       route?: RouteParams;
     }) => {
       const url = createUrl(baseUrl, query, route);
-      await client.delete(url);
-      return model;
+      return client
+        .delete(url)
+        .then(() => model)
+        .catch(handleRequestError);
     };
 
     return useMutation({
@@ -387,9 +405,10 @@ export function createPaginationQueryHook<
       meta: PaginationMetaSchema,
     });
 
-    const response = await client.get(url);
-
-    return schema.parse(response.data);
+    return client
+      .get(url)
+      .then((response) => schema.parse(response.data))
+      .catch(handleRequestError);
   };
 
   return (params?: { query: QueryParams & PaginationParams; route?: RouteParams }) => {

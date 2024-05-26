@@ -15,19 +15,27 @@ import { HelmetProvider } from 'react-helmet-async';
 import { MantineProvider } from '@mantine/core';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { NavigationProgress } from '@mantine/nprogress';
+import { Notifications } from '@mantine/notifications';
+import { ModalsProvider } from '@mantine/modals';
 
 import { Router } from '@/routes/router';
 import { theme } from '@/theme';
 import { queryClient } from '@/services/query-client';
+import { AuthProvider } from '@/providers/auth-provider';
 
 export function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <MantineProvider theme={theme}>
-          <NavigationProgress />
-          <Router />
-        </MantineProvider>
+        <AuthProvider>
+          <MantineProvider theme={theme}>
+            <Notifications position="bottom-center" />
+            <NavigationProgress />
+            <ModalsProvider>
+              <Router />
+            </ModalsProvider>
+          </MantineProvider>
+        </AuthProvider>
       </QueryClientProvider>
     </HelmetProvider>
   );
