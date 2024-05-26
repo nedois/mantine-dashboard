@@ -3,7 +3,7 @@ import { http, HttpResponse } from 'msw';
 import { app } from '@/config';
 import { generateId } from '@/utilities/uid';
 
-export const account = {
+const account = {
   id: generateId(),
   email: 'john.doe@example.com',
   avatarUrl: 'https://i.pravatar.cc/300?u=john.doe@example.com',

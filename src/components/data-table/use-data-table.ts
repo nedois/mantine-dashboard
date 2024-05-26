@@ -1,16 +1,28 @@
 import { useState } from 'react';
 
+import { DataTableSortStatus } from 'mantine-datatable';
 import { isDefined } from '@/utilities/is';
 import { DataTableTabsProps } from './data-table-tabs';
 import { DataTableFilter } from './data-table-filters';
 
-interface UseDataTableArgs {
+interface UseDataTableArgs<SortableFields> {
   tabsConfig?: DataTableTabsProps;
+  orderConfig: {
+    orderBy: DataTableSortStatus<SortableFields>['columnAccessor'];
+    order: DataTableSortStatus<SortableFields>['direction'];
+  };
 }
 
-export function useDataTable({ tabsConfig }: UseDataTableArgs) {
+export function useDataTable<SortableFields>({
+  tabsConfig,
+  orderConfig,
+}: UseDataTableArgs<SortableFields>) {
   const [currentTab, setCurrentTab] = useState(tabsConfig?.tabs[0].value);
   const [filters, setFilters] = useState<Record<string, DataTableFilter>>({});
+  const [sortStatus, setSortStatus] = useState<DataTableSortStatus<SortableFields>>({
+    columnAccessor: orderConfig.orderBy,
+    direction: orderConfig.order,
+  });
 
   const handleTabChange = (value: string) => {
     setCurrentTab(value);
@@ -53,6 +65,12 @@ export function useDataTable({ tabsConfig }: UseDataTableArgs) {
       clear: handleClearFilters,
       change: handleChangeFilter,
       remove: handleRemoveFilter,
+    },
+    order: {
+      change: setSortStatus,
+      orderBy: sortStatus.columnAccessor as keyof SortableFields,
+      order: sortStatus.direction,
+      status: sortStatus,
     },
   };
 }

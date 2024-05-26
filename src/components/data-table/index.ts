@@ -1,4 +1,5 @@
 import { CardTitle } from '../card-title';
+import { DataTableActions } from './data-table-actions';
 import { DataTableContainer } from './data-table-container';
 import { DataTableContent } from './data-table-content';
 import { DataTableFilters } from './data-table-filters';
@@ -12,4 +13,5 @@ export const DataTable = {
   Content: DataTableContent,
   Tabs: DataTableTabs,
   Filters: DataTableFilters,
+  Actions: DataTableActions,
 };

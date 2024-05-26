@@ -4,7 +4,6 @@ import { app } from '@/config';
 import { date } from '@/utilities/date';
 import { generateId } from '@/utilities/uid';
 import { LoginBodySchema } from '../resources/auth';
-import { account } from './account';
 
 const TOKEN_EXPIRATION_IN_HOURS = 24;
 
@@ -18,7 +17,7 @@ export default [
       return HttpResponse.json({ message: 'Invalid input', ...error.flatten() }, { status: 422 });
     }
 
-    if (data.password !== account.password || data.email !== account.email) {
+    if (data.password !== '123456789' || data.email !== 'john.doe@example.com') {
       return HttpResponse.json({ message: 'Invalid credentials' }, { status: 401 });
     }
 

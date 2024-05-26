@@ -1,6 +1,7 @@
 import { Page } from '@/components/page';
 import { PageHeader } from '@/components/page-header';
 import { routes } from '@/routes';
+import { CustomersTable } from './customers-table';
 
 const breadcrumbs = [
   { label: 'Dashboard', href: routes.dashboard.root },
@@ -13,6 +14,8 @@ export default function ListCustomersPage() {
   return (
     <Page title="List customers">
       <PageHeader title="List customers" breadcrumbs={breadcrumbs} />
+
+      <CustomersTable />
     </Page>
   );
 }
