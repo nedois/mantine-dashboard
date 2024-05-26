@@ -65,9 +65,6 @@ export function CustomersTable() {
     },
   });
 
-  const totalRecords = data?.meta.total ?? 0;
-  const records = data?.data ?? [];
-
   return (
     <DataTable.Container>
       <DataTable.Title
@@ -84,92 +81,98 @@ export function CustomersTable() {
 
       <DataTable.Filters filters={filters.filters} onClear={filters.clear} />
 
-      <DataTable.Content
-        page={page}
-        records={records}
-        fetching={isLoading}
-        onPageChange={setPage}
-        recordsPerPage={limit}
-        totalRecords={totalRecords}
-        onRecordsPerPageChange={setLimit}
-        recordsPerPageOptions={[5, 10, 30]}
-        sortStatus={order.status}
-        onSortStatusChange={order.change}
-        columns={[
-          {
-            accessor: 'number',
-            title: 'Customer n°',
-            width: 156,
-            render: (customer) => (
-              <LinkChip href={routes.dashboard.management.customers.view(customer.id)}>
-                {customer.number}
-              </LinkChip>
-            ),
-          },
-          {
-            accessor: 'fullName',
-            title: 'Name',
-            sortable: true,
-            render: (customer) => (
-              <Group wrap="nowrap">
-                <Avatar src={customer.avatarUrl} alt={customer.displayName}>
-                  {firstLetters(customer.displayName)}
-                </Avatar>
-                <Box w="16rem">
-                  <Text truncate="end">{customer.fullName}</Text>
-                  <Text size="sm" c="dimmed" truncate="end">
-                    {customer.email}
-                  </Text>
-                </Box>
-              </Group>
-            ),
-          },
-          {
-            accessor: 'phoneNumber',
-            title: 'Phone number',
-            noWrap: true,
-            width: 180,
-            render: (customer) => formatPhoneNumber(customer.phoneNumber),
-          },
-          {
-            accessor: 'rating',
-            title: 'Rating',
-            width: 160,
-            sortable: true,
-            render: (customer) => <Rating value={customer.rating} fractions={2} readOnly />,
-          },
-          {
-            accessor: 'status',
-            title: 'Status',
-            width: 120,
-            render: (customer) => <CustomerStatusBadge status={customer.status} w="100%" />,
-          },
-          {
-            accessor: 'createdAt',
-            title: 'Created at',
-            noWrap: true,
-            width: 140,
-            sortable: true,
-            render: (customer) => formatDate(customer.createdAt),
-          },
-          {
-            accessor: 'updatedAt',
-            title: 'Updated at',
-            noWrap: true,
-            width: 140,
-            render: (customer) => formatDate(customer.updated),
-          },
-          {
-            accessor: 'actions',
-            title: 'Actions',
-            textAlign: 'right',
-            width: 100,
-            render: () => (
-              <DataTable.Actions onView={console.log} onEdit={console.log} onDelete={console.log} />
-            ),
-          },
-        ]}
-      />
+      <DataTable.Content>
+        <DataTable.Table
+          page={page}
+          records={data?.data ?? []}
+          fetching={isLoading}
+          onPageChange={setPage}
+          recordsPerPage={limit}
+          totalRecords={data?.meta.total ?? 0}
+          onRecordsPerPageChange={setLimit}
+          recordsPerPageOptions={[5, 10, 30]}
+          sortStatus={order.status}
+          onSortStatusChange={order.change}
+          columns={[
+            {
+              accessor: 'number',
+              title: 'Customer n°',
+              width: 156,
+              render: (customer) => (
+                <LinkChip href={routes.dashboard.management.customers.view(customer.id)}>
+                  {customer.number}
+                </LinkChip>
+              ),
+            },
+            {
+              accessor: 'fullName',
+              title: 'Name',
+              sortable: true,
+              render: (customer) => (
+                <Group wrap="nowrap">
+                  <Avatar src={customer.avatarUrl} alt={customer.displayName}>
+                    {firstLetters(customer.displayName)}
+                  </Avatar>
+                  <Box w="16rem">
+                    <Text truncate="end">{customer.fullName}</Text>
+                    <Text size="sm" c="dimmed" truncate="end">
+                      {customer.email}
+                    </Text>
+                  </Box>
+                </Group>
+              ),
+            },
+            {
+              accessor: 'phoneNumber',
+              title: 'Phone number',
+              noWrap: true,
+              width: 180,
+              render: (customer) => formatPhoneNumber(customer.phoneNumber),
+            },
+            {
+              accessor: 'rating',
+              title: 'Rating',
+              width: 160,
+              sortable: true,
+              render: (customer) => <Rating value={customer.rating} fractions={2} readOnly />,
+            },
+            {
+              accessor: 'status',
+              title: 'Status',
+              width: 120,
+              render: (customer) => <CustomerStatusBadge status={customer.status} w="100%" />,
+            },
+            {
+              accessor: 'createdAt',
+              title: 'Created at',
+              noWrap: true,
+              width: 140,
+              sortable: true,
+              render: (customer) => formatDate(customer.createdAt),
+            },
+            {
+              accessor: 'updatedAt',
+              title: 'Updated at',
+              noWrap: true,
+              width: 140,
+              render: (customer) => formatDate(customer.updatedAt),
+            },
+            {
+              accessor: 'actions',
+              title: 'Actions',
+              textAlign: 'right',
+              width: 100,
+              render: () => (
+                <DataTable.Actions
+                  onView={console.log}
+                  onEdit={console.log}
+                  onDelete={console.log}
+                />
+              ),
+            },
+          ]}
+        />
+      </DataTable.Content>
     </DataTable.Container>
   );
 }

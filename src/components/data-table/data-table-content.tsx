@@ -1,11 +1,7 @@
 import { forwardRef } from 'react';
-import { CardSection } from '@mantine/core';
-import { DataTable, DataTableProps } from 'mantine-datatable';
+import { CardSection, CardSectionProps, ElementProps } from '@mantine/core';
 
-export const DataTableContent = forwardRef<HTMLDivElement, DataTableProps>(
-  ({ highlightOnHover = true, ...props }, ref) => (
-    <CardSection ref={ref}>
-      <DataTable highlightOnHover={highlightOnHover} {...props} />
-    </CardSection>
-  )
-);
+export const DataTableContent = forwardRef<
+  HTMLDivElement,
+  CardSectionProps & ElementProps<'div', keyof CardSectionProps>
+>(({ children }, ref) => <CardSection ref={ref}>{children}</CardSection>);

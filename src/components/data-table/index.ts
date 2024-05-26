@@ -1,3 +1,5 @@
+import { DataTable as MantineDataTable } from 'mantine-datatable';
+
 import { CardTitle } from '../card-title';
 import { DataTableActions } from './data-table-actions';
 import { DataTableContainer } from './data-table-container';
@@ -14,4 +16,5 @@ export const DataTable = {
   Tabs: DataTableTabs,
   Filters: DataTableFilters,
   Actions: DataTableActions,
+  Table: MantineDataTable,
 };
