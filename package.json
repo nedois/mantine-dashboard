@@ -19,6 +19,7 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@mantine/carousel": "^7.10.0",
     "@mantine/charts": "^7.10.0",
     "@mantine/code-highlight": "^7.10.0",
@@ -32,6 +33,7 @@
     "@mantine/nprogress": "^7.10.0",
     "@mantine/spotlight": "^7.10.0",
     "@mantine/tiptap": "^7.10.0",
+    "@paralleldrive/cuid2": "github:paralleldrive/cuid2",
     "@tabler/icons-react": "^3.5.0",
     "@tanstack/react-query": "^5.39.0",
     "@tiptap/extension-link": "^2.4.0",

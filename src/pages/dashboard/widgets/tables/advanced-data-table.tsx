@@ -2,113 +2,28 @@ import { Badge, MultiSelect, Radio, Stack, TextInput } from '@mantine/core';
 
 import { DataTable } from '@/components/data-table';
 import { ExportButton } from '@/components/export-button';
-
-const data = [
-  {
-    id: '1323addd-a4ac-4dd2-8de2-6f934969a0f1',
-    name: 'Feest, Bogan and Herzog',
-    streetAddress: '21716 Ratke Drive',
-    city: 'Stromanport',
-    state: 'WY',
-    missionStatement: 'Innovate bricks-and-clicks metrics.',
-    active: false,
-  },
-  {
-    id: '0cf96f1c-62c9-4e3f-97b0-4a2e8fa2bf6b',
-    name: 'Cummerata - Kuhlman',
-    streetAddress: '6389 Dicki Stream',
-    city: 'South Gate',
-    state: 'NH',
-    missionStatement: 'Harness real-time channels.',
-    active: true,
-  },
-  {
-    id: 'bba53ee9-385f-4b3d-a9a4-613ced38ff2c',
-    name: 'Goyette Inc',
-    streetAddress: '8873 Mertz Rapid',
-    city: 'Dorthyside',
-    state: 'ID',
-    missionStatement: 'Productize front-end web services.',
-    active: false,
-  },
-  {
-    id: '3d80d34a-4aff-468a-b4e5-e17658f7635e',
-    name: 'Runte Inc',
-    streetAddress: '2996 Ronny Mount',
-    city: 'McAllen',
-    state: 'MA',
-    missionStatement: 'Engage synergistic infrastructures.',
-    active: true,
-  },
-  {
-    id: '3ae22e52-335e-4e49-9e26-f5e0089edb76',
-    name: 'Goldner, Rohan and Lehner',
-    streetAddress: '632 Broadway Avenue',
-    city: 'North Louie',
-    state: 'WY',
-    missionStatement: 'Incubate cross-platform metrics.',
-    active: false,
-  },
-  {
-    id: '6e9372ad-6b30-40c1-bd05-30211cd00ed2',
-    name: "Doyle, Hodkiewicz and O'Connell",
-    streetAddress: '576 Joyce Ways',
-    city: 'Tyraburgh',
-    state: 'KS',
-    missionStatement: 'Scale web-enabled e-business.',
-    active: true,
-  },
-  {
-    id: '2d0ddea1-ee92-477e-8d63-6d0508749ae6',
-    name: "Rau - O'Hara",
-    streetAddress: '7508 Lansdowne Road',
-    city: 'Shieldsborough',
-    state: 'MI',
-    missionStatement: 'Innovate real-time applications.',
-    active: true,
-  },
-  {
-    id: '1c509c99-109e-4f2c-bc76-03c23b839222',
-    name: 'Tillman - Jacobi',
-    streetAddress: '57918 Gwendolyn Circles',
-    city: 'Sheridanport',
-    state: 'MI',
-    missionStatement: 'Matrix viral synergies.',
-    active: true,
-  },
-  {
-    id: '74207e6f-91a7-49a3-8eb4-b0c95cda3105',
-    name: 'Connelly, Feest and Hodkiewicz',
-    streetAddress: '7057 Stanley Road',
-    city: 'Kearaburgh',
-    state: 'CA',
-    missionStatement: 'Maximize dynamic e-commerce.',
-    active: true,
-  },
-  {
-    id: '3fdba2fc-2347-464b-b29a-3ef8f03ccf56',
-    name: 'Shanahan, Robel and Beier',
-    streetAddress: '378 Berta Crescent',
-    city: 'West Gerry',
-    state: 'KS',
-    missionStatement: 'Synthesize customized portals.',
-    active: true,
-  },
-];
-
-const uniqueStatesOptions = Array.from(new Set(data.map((company) => company.state)));
+import { useGetCompanies } from '@/services/resources/companies';
+import { usePagination } from '@/services/helpers';
 
 export function AdvancedDataTable() {
+  const { page, limit, setLimit, setPage } = usePagination({ page: 1, limit: 10 });
+  const { data, isLoading } = useGetCompanies({ query: { page, limit } });
+
+  const totalRecords = data?.meta.total ?? 0;
+  const records = data?.data ?? [];
+
   const { tabs, filters } = DataTable.useDataTable({
     tabsConfig: {
       tabs: [
-        { value: 'all', label: 'All', counter: 120 },
+        { value: 'all', label: 'All', counter: totalRecords },
         { value: 'pending', label: 'Pending', color: 'orange', counter: 10 },
         { value: 'cancelled', label: 'Cancelled', color: 'gray', disabled: true },
         { value: 'deleted', label: 'Deleted', counter: 0, color: 'red' },
       ],
     },
   });
+
+  const uniqueStatesOptions = Array.from(new Set(records.map((company) => company.state)));
 
   return (
     <DataTable.Container>
@@ -127,13 +42,14 @@ export function AdvancedDataTable() {
       <DataTable.Filters filters={filters.filters} onClear={filters.clear} />
 
       <DataTable.Content
-        page={1}
-        onPageChange={console.log}
-        onRecordsPerPageChange={console.log}
-        recordsPerPage={10}
+        page={page}
+        records={records}
+        fetching={isLoading}
+        onPageChange={setPage}
+        recordsPerPage={limit}
+        totalRecords={totalRecords}
+        onRecordsPerPageChange={setLimit}
         recordsPerPageOptions={[5, 10, 30]}
-        totalRecords={100}
-        records={data}
         columns={[
           {
             accessor: 'name',
@@ -152,7 +68,7 @@ export function AdvancedDataTable() {
               />
             ),
           },
-          { accessor: 'streetAddress' },
+          { accessor: 'address' },
           { accessor: 'city' },
           {
             accessor: 'state',

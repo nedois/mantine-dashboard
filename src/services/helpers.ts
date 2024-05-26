@@ -83,7 +83,9 @@ interface CreateGetQueryHookArgs<ResponseSchema extends z.ZodType> {
   /** The Zod schema for the response data */
   responseSchema: ResponseSchema;
   /** The query parameters for the react-query hook */
-  rQueryParams: Omit<UndefinedInitialDataOptions, 'queryFn'>;
+  rQueryParams: Omit<UndefinedInitialDataOptions, 'queryFn' | 'queryKey'> & {
+    queryKey: string | string[];
+  };
 }
 
 /**
@@ -100,8 +102,8 @@ interface CreateGetQueryHookArgs<ResponseSchema extends z.ZodType> {
  */
 export function createGetQueryHook<
   ResponseSchema extends z.ZodType,
-  RouteParams extends Record<string, string | number> = never,
-  QueryParams extends Record<string, string | number> = never,
+  RouteParams extends Record<string, string | number> = {},
+  QueryParams extends Record<string, string | number> = {},
 >({ endpoint, responseSchema, rQueryParams }: CreateGetQueryHookArgs<ResponseSchema>) {
   const queryFn = async (params?: { query?: QueryParams; route?: RouteParams }) => {
     const url = createUrl(endpoint, params?.query, params?.route);
@@ -151,8 +153,8 @@ interface CreatePostMutationHookArgs<
 export function createPostMutationHook<
   BodySchema extends z.ZodType,
   ResponseSchema extends z.ZodType,
-  RouteParams extends Record<string, string | number> = never,
-  QueryParams extends Record<string, string | number> = never,
+  RouteParams extends Record<string, string | number> = {},
+  QueryParams extends Record<string, string | number> = {},
 >({
   endpoint,
   bodySchema,
@@ -220,8 +222,8 @@ interface CreatePutMutationHookArgs<
 export function createPutMutationHook<
   BodySchema extends z.ZodType,
   ResponseSchema extends z.ZodType,
-  RouteParams extends Record<string, string | number> = never,
-  QueryParams extends Record<string, string | number> = never,
+  RouteParams extends Record<string, string | number> = {},
+  QueryParams extends Record<string, string | number> = {},
 >({
   endpoint,
   bodySchema,
@@ -283,8 +285,8 @@ interface CreateDeleteMutationHookArgs<
  */
 export function createDeleteMutationHook<
   ModelSchema extends z.ZodType,
-  RouteParams extends Record<string, string | number> = never,
-  QueryParams extends Record<string, string | number> = never,
+  RouteParams extends Record<string, string | number> = {},
+  QueryParams extends Record<string, string | number> = {},
 >({
   endpoint,
   rMutationParams,
@@ -322,10 +324,10 @@ export function createDeleteMutationHook<
 
 /* ------------------------------- PAGINATION ------------------------------- */
 
-export interface PaginationParams {
+export type PaginationParams = {
   page?: number;
   limit?: number;
-}
+};
 
 export function usePagination(params?: PaginationParams) {
   const [page, setPage] = useState(params?.page ?? 1);
@@ -334,7 +336,7 @@ export function usePagination(params?: PaginationParams) {
   return { page, limit, setPage, setLimit };
 }
 
-const PaginationMetaSchema = z.object({
+export const PaginationMetaSchema = z.object({
   total: z.number().int().positive(),
   perPage: z.number().int().positive(),
   currentPage: z.number().int().positive().nullable(),
@@ -346,7 +348,7 @@ const PaginationMetaSchema = z.object({
   previousPageUrl: z.string().nullable(),
 });
 
-type PaginationMeta = z.infer<typeof PaginationMetaSchema>;
+export type PaginationMeta = z.infer<typeof PaginationMetaSchema>;
 
 interface CreatePaginationQueryHookArgs<DataSchema extends z.ZodType> {
   /** The endpoint for the GET request */
@@ -354,7 +356,9 @@ interface CreatePaginationQueryHookArgs<DataSchema extends z.ZodType> {
   /** The Zod schema for the data attribute in response */
   dataSchema: DataSchema;
   /** The query parameters for the react-query hook */
-  queryParams: Omit<UndefinedInitialDataOptions, 'queryFn'>;
+  rQueryParams: Omit<UndefinedInitialDataOptions, 'queryFn' | 'queryKey'> & {
+    queryKey: string | string[];
+  };
 }
 
 /**
@@ -367,12 +371,15 @@ interface CreatePaginationQueryHookArgs<DataSchema extends z.ZodType> {
  *  queryParams: { queryKey: 'getUsers' },
  * });
  */
-export function createPaginatedQueryHook<
+export function createPaginationQueryHook<
   DataSchema extends z.ZodType,
-  QueryParams extends Record<string, string | number> = never,
-  RouteParams extends Record<string, string | number> = never,
->({ endpoint, dataSchema, queryParams }: CreatePaginationQueryHookArgs<DataSchema>) {
-  const queryFn = async (params: { query?: QueryParams; route?: RouteParams }) => {
+  QueryParams extends Record<string, string | number> = {},
+  RouteParams extends Record<string, string | number> = {},
+>({ endpoint, dataSchema, rQueryParams }: CreatePaginationQueryHookArgs<DataSchema>) {
+  const queryFn = async (params: {
+    query?: QueryParams & PaginationParams;
+    route?: RouteParams;
+  }) => {
     const url = createUrl(endpoint, params?.query, params?.route);
 
     const schema = z.object({
@@ -385,14 +392,14 @@ export function createPaginatedQueryHook<
     return schema.parse(response.data);
   };
 
-  return (params?: { query?: QueryParams; route?: RouteParams }) => {
+  return (params?: { query: QueryParams & PaginationParams; route?: RouteParams }) => {
     const query = { page: 1, limit: 25, ...params?.query } as unknown as QueryParams;
     const route = params?.route ?? ({} as RouteParams);
 
     return useQuery({
-      ...queryParams,
+      ...rQueryParams,
       queryKey: [
-        ...[queryParams.queryKey].flat(),
+        ...[rQueryParams.queryKey].flat(),
         ...Object.values(query).map(String),
         ...Object.values(route).map(String),
       ],
