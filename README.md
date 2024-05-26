@@ -2,7 +2,12 @@
 
 A simple beautiful dashboard! This project is built using [Mantine](https://mantine.dev/), [Framer Motion](https://www.framer.com/motion/), [Vite](https://vitejs.dev/), and [TypeScript](https://www.typescriptlang.org/). It serves as a modern, responsive, and highly customizable dashboard template.
 
-![Dashboard Screenshot](./screenshoots/screenshots.jpeg)
+|                                                         |                                                         |                                                         |
+| :-----------------------------------------------------: | :-----------------------------------------------------: | :-----------------------------------------------------: |
+| <img alt="screen-1" src="./screenshoots/screen-1.jpeg"> | <img alt="screen-2" src="./screenshoots/screen-2.jpeg"> | <img alt="screen-3" src="./screenshoots/screen-3.jpeg"> |
+| <img alt="screen-4" src="./screenshoots/screen-4.jpeg"> | <img alt="screen-5" src="./screenshoots/screen-5.jpeg"> | <img alt="screen-6" src="./screenshoots/screen-6.jpeg"> |
+
+|
 
 ## Table of Contents
 
