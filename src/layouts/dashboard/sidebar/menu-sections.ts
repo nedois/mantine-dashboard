@@ -9,6 +9,7 @@ import {
   PiChatCenteredDotsDuotone,
   PiTableDuotone,
   PiKanbanDuotone,
+  PiUsersDuotone,
 } from 'react-icons/pi';
 
 import { routes } from '@/routes/paths';
@@ -17,7 +18,7 @@ interface MenuItem {
   header: string;
   section: {
     name: string;
-    href?: string;
+    href: string;
     icon: ElementType;
     dropdownItems?: {
       name: string;
@@ -46,6 +47,23 @@ export const menu: MenuItem[] = [
         name: 'Kanban',
         href: routes.dashboard.apps.kanban,
         icon: PiKanbanDuotone,
+      },
+    ],
+  },
+
+  {
+    header: 'Management',
+    section: [
+      {
+        name: 'Customers',
+        icon: PiUsersDuotone,
+        href: routes.dashboard.management.customers.root,
+        dropdownItems: [
+          {
+            name: 'List',
+            href: routes.dashboard.management.customers.list,
+          },
+        ],
       },
     ],
   },

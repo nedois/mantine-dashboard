@@ -1,10 +1,12 @@
-import { NavLink as RouterLink } from 'react-router-dom';
+import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 import { Stack, Title, NavLink } from '@mantine/core';
 
 import { menu } from './menu-sections';
 import classes from './sidebar.module.css';
 
 export function Sidebar() {
+  const { pathname } = useLocation();
+
   return (
     <Stack gap="xl">
       {menu.map((item) => (
@@ -14,23 +16,14 @@ export function Sidebar() {
           </Title>
 
           {item.section.map((subItem) =>
-            subItem.href ? (
-              <NavLink
-                variant="subtle"
-                component={RouterLink}
-                to={subItem.href}
-                key={subItem.name}
-                label={subItem.name}
-                className={classes.sectionLink}
-                leftSection={subItem.icon && <subItem.icon />}
-              />
-            ) : (
+            subItem.dropdownItems ? (
               <NavLink
                 variant="subtle"
                 key={subItem.name}
                 label={subItem.name}
                 childrenOffset={0}
                 className={classes.sectionLink}
+                active={pathname.includes(subItem.href)}
                 leftSection={subItem.icon && <subItem.icon />}
               >
                 {subItem.dropdownItems?.map((dropdownItem) => (
@@ -40,11 +33,22 @@ export function Sidebar() {
                     to={dropdownItem.href}
                     key={dropdownItem.name}
                     label={dropdownItem.name}
+                    active={pathname.includes(dropdownItem.href)}
                     className={classes.sectionDropdownItemLink}
                     leftSection={<span className="dot" />}
                   />
                 ))}
               </NavLink>
+            ) : (
+              <NavLink
+                variant="subtle"
+                component={RouterLink}
+                to={subItem.href}
+                key={subItem.name}
+                label={subItem.name}
+                className={classes.sectionLink}
+                leftSection={subItem.icon && <subItem.icon />}
+              />
             )
           )}
         </div>

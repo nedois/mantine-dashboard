@@ -87,6 +87,31 @@ const router = createBrowserRouter([
           },
         ],
       },
+      /* ------------------------------- MANAGEMENT ------------------------------- */
+      {
+        path: routes.dashboard.management.root,
+        children: [
+          {
+            index: true,
+            path: routes.dashboard.management.root,
+            element: <Navigate to={routes.dashboard.management.customers.root} replace />,
+          },
+          {
+            path: routes.dashboard.management.customers.root,
+            children: [
+              {
+                index: true,
+                path: routes.dashboard.management.customers.root,
+                element: <Navigate to={routes.dashboard.management.customers.list} replace />,
+              },
+              {
+                path: routes.dashboard.management.customers.list,
+                element: LazyPage(() => import('@/pages/dashboard/management/customers/list')),
+              },
+            ],
+          },
+        ],
+      },
       /* --------------------------------- WIDGETS -------------------------------- */
       {
         path: routes.dashboard.widgets.root,

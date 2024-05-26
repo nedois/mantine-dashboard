@@ -13,6 +13,14 @@ export const routes = {
   dashboard: {
     root: '/dashboard',
     home: '/dashboard/home',
+    management: {
+      root: '/dashboard/management',
+      customers: {
+        root: '/dashboard/management/customers',
+        list: '/dashboard/management/customers/list',
+        view: (customerId: string) => `/dashboard/management/customers/${customerId}`,
+      },
+    },
     apps: {
       root: '/dashboard/apps',
       kanban: '/dashboard/apps/kanban',
