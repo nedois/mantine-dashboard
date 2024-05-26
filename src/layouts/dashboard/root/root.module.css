@@ -61,12 +61,16 @@
   bottom: 0;
   z-index: 50;
   height: 100%;
-  width: 270px;
   padding-bottom: var(--mantine-spacing-md);
 
   @media (min-width: $mantine-breakpoint-xl) {
     display: flex;
     flex-direction: column;
+    width: var(--sidebar-width-xl);
+  }
+
+  @media (min-width: $mantine-breakpoint-2xl) {
+    width: var(--sidebar-width-2xl);
   }
 }
 

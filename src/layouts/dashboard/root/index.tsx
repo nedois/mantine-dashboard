@@ -20,7 +20,6 @@ export function DashboardLayout() {
       <div className={classes.content}>
         <Header />
         <main className={classes.main}>
-          {' '}
           <Outlet />
         </main>
       </div>
