@@ -28,4 +28,6 @@ export default [
       expiresAt: date().add(TOKEN_EXPIRATION_IN_HOURS, 'hour'),
     });
   }),
+
+  http.post(`${app.apiUrl}/auth/logout`, async () => new HttpResponse(null, { status: 200 })),
 ];

@@ -10,19 +10,31 @@ import {
   PiPauseDuotone,
 } from 'react-icons/pi';
 
+import { useGetAccount } from '@/services/resources/account';
+import { useLogout } from '@/services/resources/auth';
+import { useAuth } from '@/providers/auth-provider';
+
 type CurrentUserProps = Omit<AvatarProps, 'src' | 'alt'> & ElementProps<'div', keyof AvatarProps>;
 
 export function CurrentUser(props: CurrentUserProps) {
+  const { mutate: logout } = useLogout();
+  const { setIsAuthenticated } = useAuth();
+  const { data: user } = useGetAccount();
+
+  const handleLogout = () => {
+    logout({ variables: null }, { onSuccess: () => setIsAuthenticated(false) });
+  };
+
   return (
     <Menu>
       <Menu.Target>
         <Avatar
-          src="https://i.pravatar.cc/300"
-          alt="Current user"
+          src={user?.avatarUrl}
+          alt={user?.displayName ?? 'Current user'}
           {...props}
           style={{ cursor: 'pointer', ...props.style }}
         >
-          JD
+          CU
         </Avatar>
       </Menu.Target>
       <Menu.Dropdown>
@@ -52,7 +64,9 @@ export function CurrentUser(props: CurrentUserProps) {
 
         <Menu.Divider />
 
-        <Menu.Item leftSection={<PiSignOut size="1rem" />}>Logout</Menu.Item>
+        <Menu.Item leftSection={<PiSignOut size="1rem" />} onClick={handleLogout}>
+          Logout
+        </Menu.Item>
       </Menu.Dropdown>
     </Menu>
   );

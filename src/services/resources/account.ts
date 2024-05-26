@@ -10,7 +10,7 @@ export async function getAccount() {
 const BASE_ENDPOINT = 'account';
 const QUERY_KEY = 'account';
 
-export const useAccount = createGetQueryHook({
+export const useGetAccount = createGetQueryHook({
   endpoint: BASE_ENDPOINT,
   responseSchema: User,
   rQueryParams: { queryKey: QUERY_KEY },
