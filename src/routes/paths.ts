@@ -1,4 +1,7 @@
-export const routes = {
+import docs from '@/pages/docs/paths';
+
+export const paths = {
+  docs,
   auth: {
     root: '/auth',
     login: '/auth/login',

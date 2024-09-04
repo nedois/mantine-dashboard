@@ -1,7 +1,7 @@
 import { SimpleGrid, Stack, Text } from '@mantine/core';
 import { Page } from '@/components/page';
 import { PageHeader } from '@/components/page-header';
-import { routes } from '@/routes/paths';
+import { paths } from '@/routes/paths';
 import { MetricsAndBarChart } from './metrics-and-bar-chart';
 import { MetricsAndIcons } from './metrics-and-icons';
 import { MetricsAndListAndChart } from './metrics-and-list-and-chart';
@@ -9,7 +9,7 @@ import { MetricsAndProgressBar } from './metrics-and-progress-bar';
 
 const breadcrumbs = [
   { label: 'Dashboard', href: '/' },
-  { label: 'Widgets', href: routes.dashboard.widgets.root },
+  { label: 'Widgets', href: paths.dashboard.widgets.root },
   { label: 'Metrics' },
 ];
 

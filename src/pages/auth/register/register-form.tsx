@@ -10,7 +10,7 @@ import {
   Text,
   TextInput,
 } from '@mantine/core';
-import { routes } from '@/routes';
+import { paths } from '@/routes';
 
 interface RegisterFormProps extends Omit<StackProps, 'children'> {
   onSuccess?: () => void;
@@ -29,11 +29,11 @@ export function RegisterForm({ onSuccess, ...props }: RegisterFormProps) {
         label={
           <Text fz="inherit" c="inherit" lh="inherit">
             By signing up you have agreed to our{' '}
-            <Anchor fz="inherit" lh="inherit" component={NavLink} to={routes.auth.terms}>
+            <Anchor fz="inherit" lh="inherit" component={NavLink} to={paths.auth.terms}>
               Terms
             </Anchor>{' '}
             &{' '}
-            <Anchor fz="inherit" lh="inherit" component={NavLink} to={routes.auth.privacy}>
+            <Anchor fz="inherit" lh="inherit" component={NavLink} to={paths.auth.privacy}>
               Privacy Policy
             </Anchor>
           </Text>

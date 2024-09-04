@@ -11,11 +11,11 @@ import {
 import { Card, SimpleGrid, Text } from '@mantine/core';
 import { Page } from '@/components/page';
 import { PageHeader } from '@/components/page-header';
-import { routes } from '@/routes/paths';
+import { paths } from '@/routes/paths';
 
 const breadcrumbs = [
   { label: 'Dashboard', href: '/' },
-  { label: 'Widgets', href: routes.dashboard.widgets.root },
+  { label: 'Widgets', href: paths.dashboard.widgets.root },
   { label: 'Charts' },
 ];
 

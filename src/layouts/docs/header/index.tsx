@@ -4,8 +4,6 @@ import { ColorSchemeToggler } from '@/components/color-scheme-toggler';
 import { Logo } from '@/components/logo';
 import { SpotlightSearchBarButton } from '@/components/spotlight-search-bar-button';
 import { StickyHeader } from '@/components/sticky-header';
-import { CurrentUser } from './current-user';
-import { Notifications } from './notifications';
 import { SearchMenu } from './search-menu';
 import { SidebarButton } from './sidebar-button';
 import classes from './header.module.css';
@@ -23,9 +21,6 @@ export function Header() {
 
       <Group>
         <ColorSchemeToggler />
-        ()
-        <Notifications />
-        <CurrentUser />
       </Group>
     </StickyHeader>
   );

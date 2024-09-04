@@ -1,6 +1,5 @@
 import { NavLink as RouterLink, useLocation } from 'react-router-dom';
-import { Stack, Title, NavLink } from '@mantine/core';
-
+import { NavLink, Stack, Title } from '@mantine/core';
 import { menu } from './menu-sections';
 import classes from './sidebar.module.css';
 

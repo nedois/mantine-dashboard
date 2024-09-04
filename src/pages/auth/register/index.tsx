@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Anchor, Button, Divider, Group, Stack, Text, Title } from '@mantine/core';
 import { Page } from '@/components/page';
 import { UnderlineShape } from '@/components/underline-shape';
-import { routes } from '@/routes';
+import { paths } from '@/routes';
 import { RegisterForm } from './register-form';
 
 export default function RegisterPage() {
@@ -46,7 +46,7 @@ export default function RegisterPage() {
 
         <Text fz="sm" c="dimmed">
           Already have an account?{' '}
-          <Anchor fz="inherit" component={NavLink} to={routes.auth.login}>
+          <Anchor fz="inherit" component={NavLink} to={paths.auth.login}>
             Login
           </Anchor>
         </Text>

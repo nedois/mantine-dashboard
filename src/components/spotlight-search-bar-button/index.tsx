@@ -1,25 +1,32 @@
-import { spotlight } from '@mantine/spotlight';
+import { ReactNode } from 'react';
 import { PiCommand as CommandIcon, PiMagnifyingGlassBold as SearchIcon } from 'react-icons/pi';
 import {
   Button,
+  ElementProps,
   TextInput,
   UnstyledButton,
   UnstyledButtonProps,
-  ElementProps,
 } from '@mantine/core';
+import { spotlight } from '@mantine/spotlight';
+import classes from './spotlight-search-bar-button.module.css';
 
-import { SearchMenu } from './search-menu';
-import classes from './search-button.module.css';
+interface SpotlightSearchBarButtonProps
+  extends Omit<UnstyledButtonProps, 'children'>,
+    ElementProps<'div', keyof UnstyledButtonProps> {
+  placeholder?: string;
+  spotlight: ReactNode;
+}
 
-type SearchButtonProps = Omit<UnstyledButtonProps, 'children'> &
-  ElementProps<'div', keyof UnstyledButtonProps>;
-
-export function SearchButton(props: SearchButtonProps) {
+export function SpotlightSearchBarButton({
+  placeholder,
+  spotlight: spotlightComponent,
+  ...props
+}: SpotlightSearchBarButtonProps) {
   return (
     <>
       <UnstyledButton component="div" className={classes.input} onClick={spotlight.open} {...props}>
         <TextInput
-          placeholder="Search feature"
+          placeholder={placeholder}
           leftSection={<SearchIcon />}
           rightSection={
             <Button component="span" size="compact-xs" leftSection={<CommandIcon size="1rem" />}>
@@ -47,7 +54,7 @@ export function SearchButton(props: SearchButtonProps) {
         }
       />
 
-      <SearchMenu />
+      {spotlightComponent}
     </>
   );
 }

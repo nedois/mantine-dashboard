@@ -7,7 +7,7 @@ import { FormProvider } from '@/components/forms/form-provider';
 import { PasswordInput } from '@/components/forms/password-input';
 import { TextInput } from '@/components/forms/text-input';
 import { useAuth, useLogin } from '@/hooks';
-import { routes } from '@/routes';
+import { paths } from '@/routes';
 import { handleFormErrors } from '@/utilities/form';
 
 interface LoginFormProps extends Omit<StackProps, 'children'> {
@@ -41,7 +41,7 @@ export function LoginForm({ onSuccess, ...props }: LoginFormProps) {
         <PasswordInput name="password" label="Password" required />
         <Group justify="space-between">
           <Checkbox name="remember" label="Remember me" />
-          <Anchor size="sm" component={NavLink} to={routes.auth.forgotPassword}>
+          <Anchor size="sm" component={NavLink} to={paths.auth.forgotPassword}>
             Forgot password?
           </Anchor>
         </Group>

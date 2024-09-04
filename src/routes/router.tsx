@@ -1,19 +1,20 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
-
-import { DashboardLayout } from '@/layouts/dashboard';
-import { AuthLayout } from '@/layouts/auth';
 import { AuthGuard } from '@/guards/auth-guard';
 import { GuestGuard } from '@/guards/guest-guard';
-import { routes } from './paths';
+import { AuthLayout } from '@/layouts/auth';
+import { DashboardLayout } from '@/layouts/dashboard';
+import docsRoutes from '@/pages/docs/routes';
 import { LazyPage } from './lazy-page';
+import { paths } from './paths';
 
 const router = createBrowserRouter([
+  ...docsRoutes,
   {
     path: '/',
-    element: <Navigate to={routes.dashboard.root} replace />,
+    element: <Navigate to={paths.dashboard.root} replace />,
   },
   {
-    path: routes.auth.root,
+    path: paths.auth.root,
     element: (
       <GuestGuard>
         <AuthLayout />
@@ -22,19 +23,19 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: routes.auth.root,
-        element: <Navigate to={routes.auth.login} replace />,
+        path: paths.auth.root,
+        element: <Navigate to={paths.auth.login} replace />,
       },
       {
-        path: routes.auth.login,
+        path: paths.auth.login,
         element: LazyPage(() => import('@/pages/auth/login')),
       },
       {
-        path: routes.auth.register,
+        path: paths.auth.register,
         element: LazyPage(() => import('@/pages/auth/register')),
       },
       {
-        path: routes.auth.forgotPassword,
+        path: paths.auth.forgotPassword,
         element: LazyPage(() => import('@/pages/auth/forgot-password')),
       },
       // {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
       //   element: LazyPage(() => import('@/pages/auth/reset-password')),
       // },
       {
-        path: routes.auth.otp,
+        path: paths.auth.otp,
         element: LazyPage(() => import('@/pages/auth/otp')),
       },
       // {
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: routes.dashboard.root,
+    path: paths.dashboard.root,
     element: (
       <AuthGuard>
         <DashboardLayout />
@@ -65,47 +66,47 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: routes.dashboard.root,
-        element: <Navigate to={routes.dashboard.home} replace />,
+        path: paths.dashboard.root,
+        element: <Navigate to={paths.dashboard.home} replace />,
       },
       {
-        path: routes.dashboard.home,
+        path: paths.dashboard.home,
         element: LazyPage(() => import('@/pages/dashboard/home')),
       },
       /* ---------------------------------- APPS ---------------------------------- */
       {
-        path: routes.dashboard.apps.root,
+        path: paths.dashboard.apps.root,
         children: [
           {
             index: true,
-            path: routes.dashboard.apps.root,
-            element: <Navigate to={routes.dashboard.apps.kanban} replace />,
+            path: paths.dashboard.apps.root,
+            element: <Navigate to={paths.dashboard.apps.kanban} replace />,
           },
           {
-            path: routes.dashboard.apps.kanban,
+            path: paths.dashboard.apps.kanban,
             element: LazyPage(() => import('@/pages/dashboard/apps/kanban')),
           },
         ],
       },
       /* ------------------------------- MANAGEMENT ------------------------------- */
       {
-        path: routes.dashboard.management.root,
+        path: paths.dashboard.management.root,
         children: [
           {
             index: true,
-            path: routes.dashboard.management.root,
-            element: <Navigate to={routes.dashboard.management.customers.root} replace />,
+            path: paths.dashboard.management.root,
+            element: <Navigate to={paths.dashboard.management.customers.root} replace />,
           },
           {
-            path: routes.dashboard.management.customers.root,
+            path: paths.dashboard.management.customers.root,
             children: [
               {
                 index: true,
-                path: routes.dashboard.management.customers.root,
-                element: <Navigate to={routes.dashboard.management.customers.list} replace />,
+                path: paths.dashboard.management.customers.root,
+                element: <Navigate to={paths.dashboard.management.customers.list} replace />,
               },
               {
-                path: routes.dashboard.management.customers.list,
+                path: paths.dashboard.management.customers.list,
                 element: LazyPage(() => import('@/pages/dashboard/management/customers/list')),
               },
             ],
@@ -114,23 +115,23 @@ const router = createBrowserRouter([
       },
       /* --------------------------------- WIDGETS -------------------------------- */
       {
-        path: routes.dashboard.widgets.root,
+        path: paths.dashboard.widgets.root,
         children: [
           {
             index: true,
-            path: routes.dashboard.widgets.root,
-            element: <Navigate to={routes.dashboard.widgets.charts} replace />,
+            path: paths.dashboard.widgets.root,
+            element: <Navigate to={paths.dashboard.widgets.charts} replace />,
           },
           {
-            path: routes.dashboard.widgets.metrics,
+            path: paths.dashboard.widgets.metrics,
             element: LazyPage(() => import('@/pages/dashboard/widgets/metrics')),
           },
           {
-            path: routes.dashboard.widgets.charts,
+            path: paths.dashboard.widgets.charts,
             element: LazyPage(() => import('@/pages/dashboard/widgets/charts')),
           },
           {
-            path: routes.dashboard.widgets.tables,
+            path: paths.dashboard.widgets.tables,
             element: LazyPage(() => import('@/pages/dashboard/widgets/tables')),
           },
         ],

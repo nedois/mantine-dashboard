@@ -8,7 +8,7 @@ import { DataTable } from '@/components/data-table';
 import { LinkChip } from '@/components/link-chip';
 import { CustomerStatusBadge } from '@/components/resources/customers';
 import { useGetCustomers, useGetCustomersMetrics } from '@/hooks';
-import { routes } from '@/routes';
+import { paths } from '@/routes';
 import { formatDate } from '@/utilities/date';
 import { formatPhoneNumber } from '@/utilities/phone-number';
 import { firstLetters } from '@/utilities/text';
@@ -72,7 +72,7 @@ export function CustomersTable() {
         title: 'Customer n°',
         width: 156,
         render: (customer) => (
-          <LinkChip href={routes.dashboard.management.customers.view(customer.id)}>
+          <LinkChip href={paths.dashboard.management.customers.view(customer.id)}>
             {customer.number}
           </LinkChip>
         ),

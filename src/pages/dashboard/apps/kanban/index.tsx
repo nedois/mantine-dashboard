@@ -1,13 +1,12 @@
 import { PiBarricadeDuotone as WipIcon } from 'react-icons/pi';
-
 import { Page } from '@/components/page';
 import { PageHeader } from '@/components/page-header';
-import { routes } from '@/routes';
+import { paths } from '@/routes';
 import { Kanban } from './kanban';
 
 const breadcrumbs = [
-  { label: 'Dashboard', href: routes.dashboard.root },
-  { label: 'Apps', href: routes.dashboard.apps.root },
+  { label: 'Dashboard', href: paths.dashboard.root },
+  { label: 'Apps', href: paths.dashboard.apps.root },
   { label: 'Kanban' },
 ];
 

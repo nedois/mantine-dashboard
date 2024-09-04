@@ -1,24 +1,22 @@
 import { Outlet } from 'react-router-dom';
-import { Paper, ScrollArea } from '@mantine/core';
+import { ScrollArea } from '@mantine/core';
 import { Logo } from '@/components/logo';
 import { Header } from '../header';
-import { Sidebar } from '../sidebar';
+import { DocsSideBar } from '../sidebar';
 import classes from './root.module.css';
 
-export function DashboardLayout() {
+export default function DocsLayout() {
   return (
     <div className={classes.root}>
-      <Paper className={classes.sidebarWrapper} withBorder>
-        <div className={classes.logoWrapper}>
-          <Logo w="3rem" />
-        </div>
+      <div className={classes.sidebar}>
+        <Logo m="md" w="3rem" />
         <ScrollArea flex="1" px="md">
-          <Sidebar />
+          <DocsSideBar />
         </ScrollArea>
-      </Paper>
+      </div>
+
       <div className={classes.content}>
         <Header />
-
         <main className={classes.main}>
           <Outlet />
         </main>

@@ -1,18 +1,17 @@
 import { ElementType } from 'react';
 import {
-  PiSquaresFourDuotone,
   PiChartLineUpDuotone,
-  PiStarDuotone,
-  PiShieldCheckDuotone,
-  PiUserPlusDuotone,
-  PiLockKeyDuotone,
   PiChatCenteredDotsDuotone,
-  PiTableDuotone,
   PiKanbanDuotone,
+  PiLockKeyDuotone,
+  PiShieldCheckDuotone,
+  PiSquaresFourDuotone,
+  PiStarDuotone,
+  PiTableDuotone,
+  PiUserPlusDuotone,
   PiUsersDuotone,
 } from 'react-icons/pi';
-
-import { routes } from '@/routes/paths';
+import { paths } from '@/routes/paths';
 
 interface MenuItem {
   header: string;
@@ -34,7 +33,7 @@ export const menu: MenuItem[] = [
     section: [
       {
         name: 'Welcome',
-        href: routes.dashboard.home,
+        href: paths.dashboard.home,
         icon: PiStarDuotone,
       },
     ],
@@ -45,7 +44,7 @@ export const menu: MenuItem[] = [
     section: [
       {
         name: 'Kanban',
-        href: routes.dashboard.apps.kanban,
+        href: paths.dashboard.apps.kanban,
         icon: PiKanbanDuotone,
       },
     ],
@@ -57,11 +56,11 @@ export const menu: MenuItem[] = [
       {
         name: 'Customers',
         icon: PiUsersDuotone,
-        href: routes.dashboard.management.customers.root,
+        href: paths.dashboard.management.customers.root,
         dropdownItems: [
           {
             name: 'List',
-            href: routes.dashboard.management.customers.list,
+            href: paths.dashboard.management.customers.list,
           },
         ],
       },
@@ -73,17 +72,17 @@ export const menu: MenuItem[] = [
     section: [
       {
         name: 'Charts',
-        href: routes.dashboard.widgets.charts,
+        href: paths.dashboard.widgets.charts,
         icon: PiChartLineUpDuotone,
       },
       {
         name: 'Metrics',
-        href: routes.dashboard.widgets.metrics,
+        href: paths.dashboard.widgets.metrics,
         icon: PiSquaresFourDuotone,
       },
       {
         name: 'Tables',
-        href: routes.dashboard.widgets.tables,
+        href: paths.dashboard.widgets.tables,
         icon: PiTableDuotone,
       },
     ],
@@ -94,22 +93,22 @@ export const menu: MenuItem[] = [
     section: [
       {
         name: 'Register',
-        href: routes.auth.register,
+        href: paths.auth.register,
         icon: PiUserPlusDuotone,
       },
       {
         name: 'Login',
-        href: routes.auth.login,
+        href: paths.auth.login,
         icon: PiShieldCheckDuotone,
       },
       {
         name: 'Forgot Password',
-        href: routes.auth.forgotPassword,
+        href: paths.auth.forgotPassword,
         icon: PiLockKeyDuotone,
       },
       {
         name: 'OTP',
-        href: routes.auth.otp,
+        href: paths.auth.otp,
         icon: PiChatCenteredDotsDuotone,
       },
     ],

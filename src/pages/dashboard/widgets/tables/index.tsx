@@ -1,14 +1,13 @@
 import { Stack, Title } from '@mantine/core';
-
 import { Page } from '@/components/page';
 import { PageHeader } from '@/components/page-header';
-import { routes } from '@/routes';
-import { SimpleTable } from './simple-table';
+import { paths } from '@/routes';
 import { AdvancedDataTable } from './advanced-data-table';
+import { SimpleTable } from './simple-table';
 
 const breadcrumbs = [
   { label: 'Dashboard', href: '/' },
-  { label: 'Widgets', href: routes.dashboard.widgets.root },
+  { label: 'Widgets', href: paths.dashboard.widgets.root },
   { label: 'Tables' },
 ];
 
