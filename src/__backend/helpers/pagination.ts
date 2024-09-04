@@ -12,6 +12,10 @@ export function paginate<D, R extends DefaultBodyType>(request: StrictRequest<R>
     currentPage: page,
     lastPage,
     firstPage: 1,
+    firstPageUrl: `${url.origin}${url.pathname}?page=1&limit=${limit}`,
+    lastPageUrl: `${url.origin}${url.pathname}?page=${lastPage}&limit=${limit}`,
+    nextPageUrl: `${url.origin}${url.pathname}?page=${Math.min(page + 1, lastPage)}&limit=${limit}`,
+    previousPageUrl: `${url.origin}${url.pathname}?page=${Math.max(page - 1, 1)}&limit=${limit}`,
   };
 
   return {

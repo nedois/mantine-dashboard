@@ -12,6 +12,7 @@ import 'mantine-datatable/styles.layer.css';
 import './global.css';
 
 import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { HelmetProvider } from 'react-helmet-async';
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
@@ -26,6 +27,7 @@ export function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
         <AuthProvider>
           <MantineProvider theme={theme}>
             <Notifications position="bottom-center" />

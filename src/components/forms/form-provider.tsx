@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 import invariant from 'tiny-invariant';
-import { UseFormReturnType } from '@mantine/form';
 import { Box, BoxProps, ElementProps } from '@mantine/core';
+import { UseFormReturnType } from '@mantine/form';
 
 type FormContextValues = UseFormReturnType<any>;
 

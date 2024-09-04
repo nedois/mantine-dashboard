@@ -1,43 +1,60 @@
-import { ActionIcon, Group, GroupProps } from '@mantine/core';
 import {
-  PiPencilDuotone as EditIcon,
   PiTrashDuotone as DeleteIcon,
+  PiPencilDuotone as EditIcon,
+  PiClockCounterClockwiseDuotone as RestoreIcon,
   PiEyeDuotone as ShowIcon,
 } from 'react-icons/pi';
+import { ActionIcon, Group, GroupProps, Tooltip } from '@mantine/core';
 
-interface DataTableActionsProps extends GroupProps {
+export interface DataTableActionsProps extends GroupProps {
   onEdit?: () => void;
   onView?: () => void;
   onDelete?: () => void;
+  onRestore?: () => void;
 }
 
 export function DataTableActions({
-  gap = '0.10rem',
+  gap = 'xs',
   justify = 'right',
   wrap = 'nowrap',
   onEdit,
   onView,
   onDelete,
+  onRestore,
   children,
   ...props
 }: DataTableActionsProps) {
   return (
     <Group gap={gap} justify={justify} wrap={wrap} {...props}>
       {onView && (
-        <ActionIcon c="inherit" onClick={onView}>
-          <ShowIcon size="1rem" />
-        </ActionIcon>
+        <Tooltip label="Show">
+          <ActionIcon variant="default" onClick={onView}>
+            <ShowIcon size="1rem" />
+          </ActionIcon>
+        </Tooltip>
       )}
       {onEdit && (
-        <ActionIcon c="inherit" onClick={onEdit}>
-          <EditIcon size="1rem" />
-        </ActionIcon>
+        <Tooltip label="Edit">
+          <ActionIcon variant="default" onClick={onEdit}>
+            <EditIcon size="1rem" />
+          </ActionIcon>
+        </Tooltip>
       )}
 
       {onDelete && (
-        <ActionIcon color="red" onClick={onDelete}>
-          <DeleteIcon size="1rem" />
-        </ActionIcon>
+        <Tooltip label="Delete">
+          <ActionIcon variant="default" onClick={onDelete}>
+            <DeleteIcon size="1rem" />
+          </ActionIcon>
+        </Tooltip>
+      )}
+
+      {onRestore && (
+        <Tooltip label="Restore">
+          <ActionIcon variant="default" onClick={onRestore}>
+            <RestoreIcon size="1rem" />
+          </ActionIcon>
+        </Tooltip>
       )}
 
       {children}

@@ -1,9 +1,8 @@
+import { forwardRef } from 'react';
 import {
   PasswordInput as MantinePasswordInput,
   PasswordInputProps as MantinePasswordInputProps,
 } from '@mantine/core';
-import { forwardRef } from 'react';
-
 import { useForm } from './form-provider';
 
 export interface PasswordInputProps

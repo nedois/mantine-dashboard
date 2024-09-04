@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
-import { Group, type GroupProps, Pill, Text, Button, CardSection } from '@mantine/core';
 import { PiTrashBold as ClearIcon } from 'react-icons/pi';
+import { Button, CardSection, Group, Pill, Text, type GroupProps } from '@mantine/core';
 
 type FilterValue = string | number | boolean;
 

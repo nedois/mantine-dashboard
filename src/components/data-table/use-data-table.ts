@@ -1,27 +1,32 @@
-import { useState } from 'react';
-
+import { useMemo, useState } from 'react';
 import { DataTableSortStatus } from 'mantine-datatable';
+import { useDebouncedValue } from '@mantine/hooks';
 import { isDefined } from '@/utilities/is';
-import { DataTableTabsProps } from './data-table-tabs';
 import { DataTableFilter } from './data-table-filters';
+import { DataTableTabsProps } from './data-table-tabs';
 
-interface UseDataTableArgs<SortableFields> {
+export interface UseDataTableArgs<SortableFields> {
   tabsConfig?: DataTableTabsProps;
-  orderConfig?: {
-    orderBy: DataTableSortStatus<SortableFields>['columnAccessor'];
-    order: DataTableSortStatus<SortableFields>['direction'];
+  sortConfig?: {
+    column: DataTableSortStatus<SortableFields>['columnAccessor'];
+    direction: DataTableSortStatus<SortableFields>['direction'];
   };
 }
 
+export type UseDataTableReturn<SortableFields = any> = ReturnType<
+  typeof useDataTable<SortableFields>
+>;
+
 export function useDataTable<SortableFields>({
   tabsConfig,
-  orderConfig,
+  sortConfig,
 }: UseDataTableArgs<SortableFields>) {
   const [currentTab, setCurrentTab] = useState(tabsConfig?.tabs[0].value);
   const [filters, setFilters] = useState<Record<string, DataTableFilter>>({});
+  const [debouncedFilters] = useDebouncedValue(filters, 500);
   const [sortStatus, setSortStatus] = useState<DataTableSortStatus<SortableFields>>({
-    columnAccessor: orderConfig?.orderBy ?? '',
-    direction: orderConfig?.order ?? 'asc',
+    columnAccessor: sortConfig?.column ?? '',
+    direction: sortConfig?.direction ?? 'asc',
   });
 
   const handleTabChange = (value: string) => {
@@ -54,6 +59,14 @@ export function useDataTable<SortableFields>({
     }
   };
 
+  const queryFormattedFilters = useMemo(
+    () =>
+      Object.values(debouncedFilters)
+        .filter(({ value }) => isDefined(value))
+        .reduce((acc, { name, value }) => ({ ...acc, [name]: value }), {}),
+    [debouncedFilters]
+  );
+
   return {
     tabs: {
       value: currentTab,
@@ -65,12 +78,14 @@ export function useDataTable<SortableFields>({
       clear: handleClearFilters,
       change: handleChangeFilter,
       remove: handleRemoveFilter,
+      query: queryFormattedFilters,
     },
-    order: {
+    sort: {
       change: setSortStatus as any, // TODO: fix type
-      orderBy: sortStatus.columnAccessor as keyof SortableFields,
-      order: sortStatus.direction,
+      column: sortStatus.columnAccessor as keyof SortableFields,
+      direction: sortStatus.direction,
       status: sortStatus,
+      query: `${sortStatus.columnAccessor.toString()}:${sortStatus.direction}` as const,
     },
-  };
+  } as const;
 }

@@ -1,11 +1,11 @@
 import { forwardRef, useState } from 'react';
 import {
-  Tabs,
-  CardSection,
-  CardSectionProps,
   Badge,
   Box,
+  CardSection,
+  CardSectionProps,
   Indicator,
+  Tabs,
   type IndicatorProps,
   type TabsTabProps as MantineTabsTabProps,
 } from '@mantine/core';

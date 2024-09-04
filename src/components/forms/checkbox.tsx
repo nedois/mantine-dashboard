@@ -1,6 +1,5 @@
-import { Checkbox as MantineCheckbox, CheckboxProps as MantineCheckboxProps } from '@mantine/core';
 import { forwardRef } from 'react';
-
+import { Checkbox as MantineCheckbox, CheckboxProps as MantineCheckboxProps } from '@mantine/core';
 import { useForm } from './form-provider';
 
 export interface CheckboxProps

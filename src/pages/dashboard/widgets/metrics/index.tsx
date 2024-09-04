@@ -1,19 +1,18 @@
-import { alpha, Button, Group, SimpleGrid, Stack, Text } from '@mantine/core';
 import {
+  PiBankDuotone,
+  PiFileTextDuotone,
+  PiGiftDuotone,
   PiGitCommitDuotone,
   PiGitForkDuotone,
   PiGitPullRequestDuotone,
-  PiStarDuotone,
-  PiBankDuotone,
-  PiGiftDuotone,
-  PiFileTextDuotone,
   PiPulseDuotone,
+  PiStarDuotone,
 } from 'react-icons/pi';
-
+import { alpha, Button, Group, SimpleGrid, Stack, Text } from '@mantine/core';
+import { MetricCard } from '@/components/metric-card';
 import { Page } from '@/components/page';
 import { PageHeader } from '@/components/page-header';
 import { routes } from '@/routes/paths';
-import { MetricCard } from '@/components/metric-card';
 import { formatCurrency, formatDecimal, formatInt, formatPercentage } from '@/utilities/number';
 
 const breadcrumbs = [

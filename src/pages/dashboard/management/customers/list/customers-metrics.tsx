@@ -5,8 +5,8 @@ import {
   PiUsersDuotone,
 } from 'react-icons/pi';
 import { Group, Loader, SimpleGrid } from '@mantine/core';
-import { useGetCustomersMetrics } from '@/api/entities/customers';
 import { MetricCard } from '@/components/metric-card';
+import { useGetCustomersMetrics } from '@/hooks';
 import { formatInt } from '@/utilities/number';
 
 export function CustomerMetrics() {

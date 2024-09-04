@@ -1,9 +1,8 @@
+import { forwardRef } from 'react';
 import {
   TextInput as MantineTextInput,
   TextInputProps as MantineTextInputProps,
 } from '@mantine/core';
-import { forwardRef } from 'react';
-
 import { useForm } from './form-provider';
 
 export interface TextInputProps

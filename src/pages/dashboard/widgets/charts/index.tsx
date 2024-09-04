@@ -1,4 +1,3 @@
-import { Card, SimpleGrid, Text } from '@mantine/core';
 import {
   AreaChart,
   BarChart,
@@ -9,7 +8,7 @@ import {
   ScatterChart,
   Sparkline,
 } from '@mantine/charts';
-
+import { Card, SimpleGrid, Text } from '@mantine/core';
 import { Page } from '@/components/page';
 import { PageHeader } from '@/components/page-header';
 import { routes } from '@/routes/paths';
