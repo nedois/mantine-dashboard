@@ -2,6 +2,7 @@ import { ElementType } from 'react';
 import {
   PiChartLineUpDuotone,
   PiChatCenteredDotsDuotone,
+  PiFilesDuotone,
   PiKanbanDuotone,
   PiLockKeyDuotone,
   PiShieldCheckDuotone,
@@ -35,6 +36,11 @@ export const menu: MenuItem[] = [
         name: 'Welcome',
         href: paths.dashboard.home,
         icon: PiStarDuotone,
+      },
+      {
+        name: 'Documentation',
+        href: paths.docs.root,
+        icon: PiFilesDuotone,
       },
     ],
   },
