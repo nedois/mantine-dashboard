@@ -1,7 +1,6 @@
+import { PiArrowLeft as GoBackIcon } from 'react-icons/pi';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Box, Button, Center, Flex, Image, SimpleGrid, Text, Title } from '@mantine/core';
-import { PiArrowLeft as GoBackIcon } from 'react-icons/pi';
-
 import demoImg from '@/assets/app-demo.webp';
 import { Logo } from '@/components/logo';
 

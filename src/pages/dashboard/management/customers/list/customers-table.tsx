@@ -1,14 +1,13 @@
-import { Avatar, Group, Text, Box, Rating, Loader } from '@mantine/core';
-
-import { DataTable } from '@/components/data-table';
+import { Avatar, Box, Group, Loader, Rating, Text } from '@mantine/core';
+import { Customer, useGetCustomers, useGetCustomersMetrics } from '@/api/entities/customers';
+import { usePagination } from '@/api/helpers';
 import { AddButton } from '@/components/add-button';
-import { usePagination } from '@/services/helpers';
-import { useGetCustomers, useGetCustomersMetrics, Customer } from '@/services/resources/customers';
-import { formatPhoneNumber } from '@/utilities/phone-number';
-import { firstLetters } from '@/utilities/text';
+import { DataTable } from '@/components/data-table';
 import { LinkChip } from '@/components/link-chip';
 import { routes } from '@/routes';
 import { formatDate } from '@/utilities/date';
+import { formatPhoneNumber } from '@/utilities/phone-number';
+import { firstLetters } from '@/utilities/text';
 import { CustomerStatusBadge } from './customer-status-badge';
 
 type OrderFields = Pick<Customer, 'fullName' | 'rating' | 'createdAt'>;

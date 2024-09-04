@@ -1,25 +1,22 @@
-import { Avatar, AvatarProps, ElementProps, Menu } from '@mantine/core';
 import {
-  PiHeartDuotone,
-  PiStarDuotone,
   PiChatDuotone,
   PiGearSixDuotone,
-  PiUserSwitchDuotone,
-  PiSignOut,
-  PiTrashDuotone,
+  PiHeartDuotone,
   PiPauseDuotone,
+  PiSignOut,
+  PiStarDuotone,
+  PiTrashDuotone,
+  PiUserSwitchDuotone,
 } from 'react-icons/pi';
-
-import { useGetAccount } from '@/services/resources/account';
-import { useLogout } from '@/services/resources/auth';
-import { useAuth } from '@/providers/auth-provider';
+import { Avatar, AvatarProps, ElementProps, Menu } from '@mantine/core';
+import { useAuth, useGetAccountInfo, useLogout } from '@/hooks';
 
 type CurrentUserProps = Omit<AvatarProps, 'src' | 'alt'> & ElementProps<'div', keyof AvatarProps>;
 
 export function CurrentUser(props: CurrentUserProps) {
   const { mutate: logout } = useLogout();
   const { setIsAuthenticated } = useAuth();
-  const { data: user } = useGetAccount();
+  const { data: user } = useGetAccountInfo();
 
   const handleLogout = () => {
     logout({ variables: null }, { onSuccess: () => setIsAuthenticated(false) });

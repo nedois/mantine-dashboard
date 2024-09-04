@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-
-import { useAuth } from '@/providers/auth-provider';
 import { LoadingScreen } from '@/components/loading-screen';
+import { app } from '@/config';
+import { useAuth } from '@/hooks';
 import { routes } from '@/routes';
 
 interface AuthGuardProps {
@@ -18,7 +18,9 @@ export function AuthGuard({ children }: AuthGuardProps) {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to={`${routes.auth.login}?r=${pathname}`} replace />;
+    return (
+      <Navigate to={`${routes.auth.login}?${app.redirectQueryParamName}=${pathname}`} replace />
+    );
   }
 
   return children;

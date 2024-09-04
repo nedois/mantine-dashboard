@@ -1,9 +1,8 @@
 import { Group, Table } from '@mantine/core';
-
-import { TableContainer } from '@/components/table-container';
-import { ExportButton } from '@/components/export-button';
+import { useGetAtoms } from '@/api/entities/atoms';
 import { AddButton } from '@/components/add-button';
-import { useGetAtoms } from '@/services/resources/atoms';
+import { ExportButton } from '@/components/export-button';
+import { TableContainer } from '@/components/table-container';
 
 export function SimpleTable() {
   const { data = [] } = useGetAtoms();

@@ -1,15 +1,18 @@
 import { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-
-import { useAuth } from '@/providers/auth-provider';
 import { LoadingScreen } from '@/components/loading-screen';
+import { app } from '@/config';
+import { useAuth } from '@/hooks';
 import { routes } from '@/routes';
 
 interface GuestGuardProps {
   children: ReactNode;
 }
 
-const REDIRECT_QUERY_PARAM_REGEX = /r=([^&]*)/;
+function getRedirectPath(search: string) {
+  const REDIRECT_QUERY_PARAM_REGEX = new RegExp(`${app.redirectQueryParamName}=([^&]*)`);
+  return REDIRECT_QUERY_PARAM_REGEX.exec(search)?.[1] ?? routes.dashboard.root;
+}
 
 export function GuestGuard({ children }: GuestGuardProps) {
   const { search } = useLocation();
@@ -20,7 +23,7 @@ export function GuestGuard({ children }: GuestGuardProps) {
   }
 
   if (isAuthenticated) {
-    const redirectPath = REDIRECT_QUERY_PARAM_REGEX.exec(search)?.[1] ?? routes.dashboard.root;
+    const redirectPath = getRedirectPath(search);
     return <Navigate to={redirectPath} replace />;
   }
 

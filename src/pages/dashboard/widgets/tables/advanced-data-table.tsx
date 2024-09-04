@@ -1,9 +1,8 @@
 import { Badge, MultiSelect, Radio, Stack, TextInput } from '@mantine/core';
-
+import { useGetCompanies } from '@/api/entities/companies';
+import { usePagination } from '@/api/helpers';
 import { DataTable } from '@/components/data-table';
 import { ExportButton } from '@/components/export-button';
-import { useGetCompanies } from '@/services/resources/companies';
-import { usePagination } from '@/services/helpers';
 
 export function AdvancedDataTable() {
   const { page, limit, setLimit, setPage } = usePagination({ page: 1, limit: 10 });

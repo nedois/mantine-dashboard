@@ -1,5 +1,7 @@
 export const app = {
   name: 'Mantine Dashboard',
-  apiUrl: 'https://api.example.com',
-  enableMocking: true,
+  apiBaseUrl: 'https://api.example.com',
+  fakeBackend: true,
+  redirectQueryParamName: 'r',
+  accessTokenStoreKey: 'access_token',
 };

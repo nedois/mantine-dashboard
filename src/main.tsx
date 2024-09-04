@@ -1,10 +1,7 @@
-import './global.css';
-
 import ReactDOM from 'react-dom/client';
-
+import { enableFakeBackend } from './__backend';
 import { App } from './app';
-import { enableMocking } from './enable-mocking';
 
-enableMocking().then(() => {
+enableFakeBackend().then(() => {
   ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
 });

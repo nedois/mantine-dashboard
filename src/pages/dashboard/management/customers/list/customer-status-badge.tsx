@@ -1,6 +1,5 @@
 import { Badge, BadgeProps } from '@mantine/core';
-
-import { Customer } from '@/services/resources/customers';
+import { Customer } from '@/api/entities/customers';
 import { match } from '@/utilities/match';
 
 interface CustomerStatusBadgeProps extends Omit<BadgeProps, 'children' | 'color'> {

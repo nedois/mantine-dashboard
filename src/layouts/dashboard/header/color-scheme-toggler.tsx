@@ -1,6 +1,6 @@
 import {
-  PiSunDimDuotone as LightIcon,
   PiMoonDuotone as DarkIcon,
+  PiSunDimDuotone as LightIcon,
   PiDesktop as SystemIcon,
 } from 'react-icons/pi';
 import {
@@ -11,7 +11,6 @@ import {
   Tooltip,
   useMantineColorScheme,
 } from '@mantine/core';
-
 import { match } from '@/utilities/match';
 
 type ColorSchemeTogglerProps = Omit<ActionIconProps, 'children' | 'c' | 'onClick' | 'size'> &

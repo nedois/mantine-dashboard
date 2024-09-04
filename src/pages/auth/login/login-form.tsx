@@ -1,14 +1,13 @@
-import { Anchor, Button, Group, Stack, StackProps } from '@mantine/core';
 import { NavLink } from 'react-router-dom';
+import { Anchor, Button, Group, Stack, StackProps } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
-
-import { routes } from '@/routes';
-import { LoginBodySchema, useLogin } from '@/services/resources/auth';
-import { useAuth } from '@/providers/auth-provider';
-import { FormProvider } from '@/components/forms/form-provider';
-import { TextInput } from '@/components/forms/text-input';
-import { PasswordInput } from '@/components/forms/password-input';
+import { LoginRequestSchema } from '@/api/dtos';
 import { Checkbox } from '@/components/forms/checkbox';
+import { FormProvider } from '@/components/forms/form-provider';
+import { PasswordInput } from '@/components/forms/password-input';
+import { TextInput } from '@/components/forms/text-input';
+import { useAuth, useLogin } from '@/hooks';
+import { routes } from '@/routes';
 import { handleFormErrors } from '@/utilities/form';
 
 interface LoginFormProps extends Omit<StackProps, 'children'> {
@@ -21,7 +20,7 @@ export function LoginForm({ onSuccess, ...props }: LoginFormProps) {
 
   const form = useForm({
     mode: 'uncontrolled',
-    validate: zodResolver(LoginBodySchema),
+    validate: zodResolver(LoginRequestSchema),
     initialValues: { email: 'john.doe@example.com', password: '123456789', remember: false },
   });
 

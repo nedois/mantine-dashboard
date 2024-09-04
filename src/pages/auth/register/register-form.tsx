@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import {
   Anchor,
   Button,
@@ -9,8 +10,6 @@ import {
   Text,
   TextInput,
 } from '@mantine/core';
-import { NavLink } from 'react-router-dom';
-
 import { routes } from '@/routes';
 
 interface RegisterFormProps extends Omit<StackProps, 'children'> {

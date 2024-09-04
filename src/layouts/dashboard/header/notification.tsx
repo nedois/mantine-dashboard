@@ -1,13 +1,12 @@
 import { ReactNode } from 'react';
 import {
-  UnstyledButton,
-  UnstyledButtonProps,
   ElementProps,
+  Grid,
   Group,
   Text,
-  Grid,
+  UnstyledButton,
+  UnstyledButtonProps,
 } from '@mantine/core';
-
 import { CustomDate, formatRelativeDate } from '@/utilities/date';
 import { capitalize } from '@/utilities/text';
 import classes from './notification.module.css';

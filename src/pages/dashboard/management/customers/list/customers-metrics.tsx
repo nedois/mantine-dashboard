@@ -1,12 +1,11 @@
-import { Group, SimpleGrid, Loader } from '@mantine/core';
 import {
-  PiUsersDuotone,
-  PiProhibitDuotone,
   PiArchiveDuotone,
+  PiProhibitDuotone,
   PiPulseDuotone,
+  PiUsersDuotone,
 } from 'react-icons/pi';
-
-import { useGetCustomersMetrics } from '@/services/resources/customers';
+import { Group, Loader, SimpleGrid } from '@mantine/core';
+import { useGetCustomersMetrics } from '@/api/entities/customers';
 import { MetricCard } from '@/components/metric-card';
 import { formatInt } from '@/utilities/number';
 

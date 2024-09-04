@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Group } from '@mantine/core';
-
-import { StickyHeader } from '@/components/sticky-header';
 import { Logo } from '@/components/logo';
-import { SidebarButton } from './sidebar-button';
-import { SearchButton } from './search-button';
+import { StickyHeader } from '@/components/sticky-header';
 import { ColorSchemeToggler } from './color-scheme-toggler';
 import { CurrentUser } from './current-user';
 import { Notifications } from './notifications';
+import { SearchButton } from './search-button';
+import { SidebarButton } from './sidebar-button';
 import classes from './header.module.css';
 
 export function Header() {

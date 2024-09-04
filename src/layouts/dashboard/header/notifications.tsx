@@ -1,3 +1,4 @@
+import { PiBellDuotone as NotificationsIcon } from 'react-icons/pi';
 import {
   ActionIcon,
   ActionIconProps,
@@ -9,9 +10,7 @@ import {
   Tooltip,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { PiBellDuotone as NotificationsIcon } from 'react-icons/pi';
-
-import { fakeNotifications } from '@/db/fake-notifications';
+import { useGetNotifications } from '@/hooks/api';
 import { Notification } from './notification';
 
 type NotificationsProps = Omit<ActionIconProps, 'children' | 'c' | 'onClick' | 'size'> &
@@ -19,6 +18,7 @@ type NotificationsProps = Omit<ActionIconProps, 'children' | 'c' | 'onClick' | '
 
 export function Notifications(props: NotificationsProps) {
   const [opened, { open, close }] = useDisclosure(false);
+  const { data: notifications } = useGetNotifications();
 
   const hasNewNotifications = true;
 
@@ -51,7 +51,7 @@ export function Notifications(props: NotificationsProps) {
           </Drawer.Header>
 
           <Drawer.Body p="0">
-            {fakeNotifications.map((notification) => (
+            {notifications?.map((notification) => (
               <Notification
                 key={notification.id}
                 title={notification.title}

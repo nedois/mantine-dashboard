@@ -1,5 +1,4 @@
 import { Stack, Text, Title } from '@mantine/core';
-
 import { Page } from '@/components/page';
 import { ForgotPasswordForm } from './forgot-password-form';
 

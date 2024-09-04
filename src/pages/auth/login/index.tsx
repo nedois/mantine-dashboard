@@ -1,10 +1,9 @@
+import { PiGoogleLogoDuotone as GoogleIcon, PiXLogoDuotone as XIcon } from 'react-icons/pi';
 import { NavLink } from 'react-router-dom';
 import { Anchor, Button, Divider, Group, Stack, Text, Title } from '@mantine/core';
-import { PiXLogoDuotone as XIcon, PiGoogleLogoDuotone as GoogleIcon } from 'react-icons/pi';
-
-import { routes } from '@/routes';
-import { UnderlineShape } from '@/components/underline-shape';
 import { Page } from '@/components/page';
+import { UnderlineShape } from '@/components/underline-shape';
+import { routes } from '@/routes';
 import { LoginForm } from './login-form';
 
 export default function LoginPage() {

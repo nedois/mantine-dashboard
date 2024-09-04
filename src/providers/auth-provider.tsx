@@ -1,8 +1,6 @@
-import invariant from 'tiny-invariant';
-import { ReactNode, createContext, useState, useEffect, useContext, useMemo } from 'react';
-
-import { loadAccessToken } from '@/services/axios';
-import { getAccount } from '@/services/resources/account';
+import { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
+import { loadAccessToken } from '@/api/axios';
+import { getAccountInfo } from '@/api/resources';
 
 interface AuthContextValues {
   isAuthenticated: boolean;
@@ -10,7 +8,7 @@ interface AuthContextValues {
   setIsAuthenticated: (isAuthenticated: boolean) => void;
 }
 
-const AuthContext = createContext<AuthContextValues | null>(null);
+export const AuthContext = createContext<AuthContextValues | null>(null);
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -23,7 +21,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
     loadAccessToken();
 
-    getAccount()
+    getAccountInfo()
       .then(() => setIsAuthenticated(true))
       .catch(() => setIsAuthenticated(false))
       .finally(() => setIsInitialized(true));
@@ -35,10 +33,4 @@ export function AuthProvider({ children }: AuthProviderProps) {
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
-
-export function useAuth() {
-  const context = useContext(AuthContext);
-  invariant(context, 'useAuth must be used within an AuthProvider');
-  return context;
 }

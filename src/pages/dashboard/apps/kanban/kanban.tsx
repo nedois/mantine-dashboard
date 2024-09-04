@@ -1,7 +1,6 @@
 import { DndContext } from '@dnd-kit/core';
 import { faker } from '@faker-js/faker';
-
-import { createMany } from '@/utilities/factory';
+import { generateMany } from '@/utilities/factory';
 import { randomInt } from '@/utilities/number';
 import { generateId } from '@/utilities/uid';
 import { KanbanBoard } from './kanban-board';
@@ -10,20 +9,20 @@ import { KanbanColumn } from './kanban-column';
 
 const titles = ['Todo', 'In progress', 'Read to test', 'Review', 'Done'];
 
-const data = createMany(titles.length, (i) => ({
+const data = generateMany(titles.length, (i) => ({
   id: generateId(),
   title: titles[i],
-  cards: createMany(randomInt({ min: 2, max: 5 }), () => ({
+  cards: generateMany(randomInt({ min: 2, max: 5 }), () => ({
     id: generateId(),
     priority: faker.helpers.arrayElement(['low', 'normal', 'high'] as const),
-    tags: createMany(randomInt({ min: 1, max: 5 }), () => ({
+    tags: generateMany(randomInt({ min: 1, max: 5 }), () => ({
       id: generateId(),
       label: faker.helpers.arrayElement(['mobile', 'backend', 'frontend']),
       color: faker.internet.color(),
     })),
     commentsCount: randomInt({ min: 0, max: 50 }),
     attachmentsCount: randomInt({ min: 0, max: 5 }),
-    assignees: createMany(randomInt({ min: 3, max: 6 }), () => ({
+    assignees: generateMany(randomInt({ min: 3, max: 6 }), () => ({
       id: generateId(),
       displayName: faker.person.fullName(),
       avatarUrl: `https://i.pravatar.cc/300?u=${faker.internet.email()}`,
