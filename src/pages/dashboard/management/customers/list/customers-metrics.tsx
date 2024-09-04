@@ -20,7 +20,7 @@ export function CustomerMetrics() {
   ];
 
   return (
-    <SimpleGrid cols={{ base: 1, sm: 2, xl: 3, '2xl': 4 }}>
+    <SimpleGrid cols={{ base: 1, sm: 2, xl: 4 }}>
       {cards.map((card) => (
         <MetricCard.Root key={card.title}>
           <Group>
