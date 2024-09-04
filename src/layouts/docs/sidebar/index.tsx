@@ -1,14 +1,15 @@
 import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 import { NavLink, Stack, Title } from '@mantine/core';
-import { menuSections } from './menu-sections';
+import { useMenuSections } from './use-menu-sections';
 import classes from './sidebar.module.css';
 
 export function DocsSideBar() {
   const { pathname } = useLocation();
+  const sections = useMenuSections();
 
   return (
     <Stack gap="xl">
-      {menuSections.map(({ title, items }) => (
+      {sections.map(({ title, items }) => (
         <div key={title}>
           <Title order={6} ml="sm" mb="sm">
             {title}
