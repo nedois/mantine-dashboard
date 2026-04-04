@@ -9,38 +9,90 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as GuestRouteImport } from './routes/_guest'
+import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GuestLoginRouteImport } from './routes/_guest/login'
+import { Route as AuthOverviewRouteImport } from './routes/_auth/overview'
 
+const GuestRoute = GuestRouteImport.update({
+  id: '/_guest',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/_auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuestLoginRoute = GuestLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => GuestRoute,
+} as any)
+const AuthOverviewRoute = AuthOverviewRouteImport.update({
+  id: '/overview',
+  path: '/overview',
+  getParentRoute: () => AuthRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/overview': typeof AuthOverviewRoute
+  '/login': typeof GuestLoginRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/overview': typeof AuthOverviewRoute
+  '/login': typeof GuestLoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_auth': typeof AuthRouteWithChildren
+  '/_guest': typeof GuestRouteWithChildren
+  '/_auth/overview': typeof AuthOverviewRoute
+  '/_guest/login': typeof GuestLoginRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/overview' | '/login'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/overview' | '/login'
+  id:
+    | '__root__'
+    | '/'
+    | '/_auth'
+    | '/_guest'
+    | '/_auth/overview'
+    | '/_guest/login'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRouteWithChildren
+  GuestRoute: typeof GuestRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_guest': {
+      id: '/_guest'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof GuestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +100,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_guest/login': {
+      id: '/_guest/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof GuestLoginRouteImport
+      parentRoute: typeof GuestRoute
+    }
+    '/_auth/overview': {
+      id: '/_auth/overview'
+      path: '/overview'
+      fullPath: '/overview'
+      preLoaderRoute: typeof AuthOverviewRouteImport
+      parentRoute: typeof AuthRoute
+    }
   }
 }
 
+interface AuthRouteChildren {
+  AuthOverviewRoute: typeof AuthOverviewRoute
+}
+
+const AuthRouteChildren: AuthRouteChildren = {
+  AuthOverviewRoute: AuthOverviewRoute,
+}
+
+const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+
+interface GuestRouteChildren {
+  GuestLoginRoute: typeof GuestLoginRoute
+}
+
+const GuestRouteChildren: GuestRouteChildren = {
+  GuestLoginRoute: GuestLoginRoute,
+}
+
+const GuestRouteWithChildren = GuestRoute._addFileChildren(GuestRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRouteWithChildren,
+  GuestRoute: GuestRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

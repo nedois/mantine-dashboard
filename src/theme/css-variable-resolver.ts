@@ -21,11 +21,10 @@ function getCSSColorVariables(
 
   const dynamicVariables = {
     [`--mantine-color-${color}-text`]: `var(--mantine-color-${color}-filled)`,
-    [`--mantine-color-${color}-light`]: `var(--mantine-color-${color}-${1})`,
     [`--mantine-color-${color}-filled`]: `var(--mantine-color-${color}-${primaryShade})`,
     [`--mantine-color-${color}-filled-hover`]: alpha(`var(--mantine-color-${color}-filled)`, 0.9),
     [`--mantine-color-${color}-light`]: alpha(`var(--mantine-color-${color}-filled)`, 0.05),
-    [`--mantine-color-${color}-light-hover`]: alpha(`var(--mantine-color-${color}-filled)`, 0.15),
+    [`--mantine-color-${color}-light-hover`]: alpha(`var(--mantine-color-${color}-filled)`, 0.1),
     [`--mantine-color-${color}-light-color`]: `var(--mantine-color-${color}-filled)`,
     [`--mantine-color-${color}-outline`]: `var(--mantine-color-${color}-filled)`,
     [`--mantine-color-${color}-outline-hover`]: alpha(`var(--mantine-color-${color}-filled)`, 0.1),
@@ -44,7 +43,7 @@ export const cssVariableResolver: CSSVariablesResolver = (theme) => {
         "--mantine-color-body": "var(--mantine-color-white)",
         "--mantine-color-error": "var(--mantine-color-error-9)",
         "--mantine-color-placeholder": "var(--mantine-color-secondary-9)",
-        "--mantine-color-anchor": "var(--mantine-color-primary-9)",
+        "--mantine-color-anchor": "var(--mantine-color-primary-filled)",
 
         "--mantine-color-default": "var(--mantine-color-secondary-0)",
         "--mantine-color-default-hover": "var(--mantine-color-secondary-1)",
@@ -60,7 +59,7 @@ export const cssVariableResolver: CSSVariablesResolver = (theme) => {
         "--mantine-color-body": "var(--mantine-color-secondary-9)",
         "--mantine-color-error": "var(--mantine-color-error-9)",
         "--mantine-color-placeholder": "var(--mantine-color-secondary-4)",
-        "--mantine-color-anchor": "var(--mantine-color-primary-4)",
+        "--mantine-color-anchor": "var(--mantine-color-primary-filled)",
 
         "--mantine-color-default": "var(--mantine-color-secondary-9)",
         "--mantine-color-default-hover": "var(--mantine-color-secondary-7)",

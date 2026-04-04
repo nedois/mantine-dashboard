@@ -78,11 +78,11 @@ export function Hero(props: HeroProps) {
             w="100%"
             maw={380}
           >
-            <Button size="lg" rightSection={<Icon icon="lucide:arrow-right" />}>
-              Get Started
+            <Button component={Link} to="/overview" size="lg" rightSection={<Icon icon="lucide:arrow-right" />}>
+              Live Demo
             </Button>
-            <Button component={Link} variant="default" size="lg" to="/dashboard">
-              View Live Demo
+            <Button component={Link} variant="default" size="lg" to="/components">
+              Components
             </Button>
           </Group>
         </Flex>

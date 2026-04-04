@@ -1,9 +1,18 @@
 import { alpha, Box } from "@mantine/core";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { CtaCard, Desktop, Features, Footer, Header, Hero, Pages, Pricing, Testimonials } from "#/sections/home";
 
-export const Route = createFileRoute("/")({ component: HomePage });
+export const Route = createFileRoute("/")({
+  component: HomePage,
+  beforeLoad: async () => {
+    const isAuthenticated = false;
+
+    if (isAuthenticated) {
+      throw redirect({ to: "/overview" });
+    }
+  },
+});
 
 function HomePage() {
   return (
