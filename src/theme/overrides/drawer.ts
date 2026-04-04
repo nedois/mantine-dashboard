@@ -1,4 +1,4 @@
-import { DrawerOverlay } from '@mantine/core';
+import { DrawerOverlay, type MantineThemeOverride } from "@mantine/core";
 
 export default {
   DrawerOverlay: DrawerOverlay.extend({
@@ -7,4 +7,4 @@ export default {
       blur: 2,
     },
   }),
-};
+} as MantineThemeOverride["components"];

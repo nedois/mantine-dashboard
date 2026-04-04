@@ -1,7 +1,20 @@
-import ReactDOM from 'react-dom/client';
-import { enableFakeBackend } from './__backend';
-import { App } from './app';
+import "./global.css";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-enableFakeBackend().then(() => {
-  ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
-});
+import { Providers } from "./providers";
+import { Router } from "./router";
+
+const rootElement = document.getElementById("app");
+
+if (!rootElement) {
+  throw new Error("Failed to find the root element");
+}
+
+createRoot(rootElement).render(
+  <StrictMode>
+    <Providers>
+      <Router />
+    </Providers>
+  </StrictMode>
+);

@@ -1,0 +1,22 @@
+.wrapper {
+  --input-disabled-bg: alpha(var(--mantine-color-default-hover), 0.5);
+  --input-disabled-color: alpha(var(--mantine-color-text), 0.5);
+
+  &[data-variant="default"] {
+    --input-bd: var(--mantine-color-default-border);
+    --input-bg: var(--mantine-color-body);
+    --input-bd-focus: var(--mantine-primary-color-filled);
+  }
+
+  &[data-variant="filled"] {
+    --input-bd: transparent;
+    --input-bg: var(--mantine-color-default-hover);
+    --input-bd-focus: var(--mantine-primary-color-filled);
+  }
+
+  &[data-variant="unstyled"] {
+    --input-bd: transparent;
+    --input-bg: transparent;
+    --input-bd-focus: transparent;
+  }
+}

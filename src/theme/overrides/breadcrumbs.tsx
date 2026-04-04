@@ -1,12 +1,11 @@
-import { Breadcrumbs } from '@mantine/core';
-import { GoDotFill as BreadcrumbsSeparator } from 'react-icons/go';
+import { Breadcrumbs, type MantineThemeOverride } from "@mantine/core";
+
+import { Icon } from "../../components/icon";
 
 export default {
   Breadcrumbs: Breadcrumbs.extend({
     defaultProps: {
-      separator: (
-        <BreadcrumbsSeparator size="0.5rem" color="var(--mantine-color-dimmed)" opacity={0.4} />
-      ),
+      separator: <Icon c="dimmed" height="0.5rem" icon="octicon:dot-fill-24" opacity={0.4} />,
     },
   }),
-};
+} as MantineThemeOverride["components"];

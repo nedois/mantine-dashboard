@@ -1,0 +1,15 @@
+{
+  "projectName": "mantine-dashboard",
+  "mode": "file-router",
+  "typescript": true,
+  "packageManager": "pnpm",
+  "includeExamples": false,
+  "tailwind": false,
+  "addOnOptions": {},
+  "envVarValues": {},
+  "git": true,
+  "routerOnly": true,
+  "version": 1,
+  "framework": "react",
+  "chosenAddOns": []
+}

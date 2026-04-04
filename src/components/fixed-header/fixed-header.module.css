@@ -1,0 +1,11 @@
+.root {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  background-color: alpha(var(--mantine-color-default), 0.8);
+  border-bottom: 1px solid var(--mantine-color-default-border);
+}

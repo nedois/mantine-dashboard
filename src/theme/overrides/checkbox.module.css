@@ -1,0 +1,38 @@
+.root {
+  --checkbox-color: var(--mantine-primary-color-filled);
+  --checkbox-icon-color: var(--mantine-primary-color-contrast);
+}
+
+.label {
+  &[data-disabled] {
+    color: inherit;
+    opacity: 0.7;
+  }
+}
+
+.input {
+  background-color: transparent;
+  border-color: var(--checkbox-color);
+
+  &[data-indeterminate],
+  &:checked {
+    background-color: var(--checkbox-color);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+
+    & + .icon {
+      opacity: 0.5;
+      color: var(--checkbox-icon-color);
+    }
+  }
+}
+
+.input--outline {
+  background-color: transparent;
+
+  & + .icon {
+    color: var(--checkbox-color);
+  }
+}

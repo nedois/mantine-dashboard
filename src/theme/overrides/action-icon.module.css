@@ -1,0 +1,7 @@
+.root {
+  transition: transform 0.1s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}

@@ -1,0 +1,11 @@
+.root {
+  display: grid;
+  grid-template-columns: repeat(var(--bg-columns), 1fr);
+  gap: var(--bg-gap);
+}
+
+.item {
+  grid-column: span var(--bgi-col-span, 1);
+  grid-row: span var(--bgi-row-span, 1);
+  min-width: 0;
+}

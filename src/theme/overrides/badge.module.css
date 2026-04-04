@@ -1,0 +1,22 @@
+.root {
+  --badge-color: var(--mantine-primary-color-contrast);
+
+  text-transform: none;
+  font-weight: 500;
+
+  .label {
+    text-box-trim: none;
+  }
+
+  &[data-variant="ghost"] {
+    background-color: var(--mantine-color-secondary-light);
+    color: var(--mantine-color-text);
+  }
+
+  &[data-variant="glow"] {
+    background-color: color-mix(in oklch, white 10%, transparent);
+    backdrop-filter: blur(8px);
+    border: 1px solid color-mix(in oklch, white 10%, transparent);
+    color: var(--mantine-color-text);
+  }
+}

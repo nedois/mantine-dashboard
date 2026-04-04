@@ -1,10 +1,10 @@
-import { RingProgress } from '@mantine/core';
+import { type MantineThemeOverride, RingProgress } from "@mantine/core";
 
 export default {
   RingProgress: RingProgress.extend({
     defaultProps: {
-      thickness: 6,
       roundCaps: true,
+      thickness: 6,
     },
   }),
-};
+} as MantineThemeOverride["components"];

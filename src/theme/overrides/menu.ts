@@ -1,11 +1,14 @@
-import { Menu } from '@mantine/core';
+import { type MantineThemeOverride, Menu } from "@mantine/core";
 
 export default {
   Menu: Menu.extend({
     defaultProps: {
-      shadow: 'md',
+      shadow: "md",
+      transitionProps: {
+        duration: 200,
+        transition: "scale",
+      },
       withArrow: true,
-      transitionProps: { transition: 'scale', duration: 200 },
     },
   }),
-};
+} as MantineThemeOverride["components"];

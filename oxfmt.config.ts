@@ -1,0 +1,30 @@
+import { defineConfig } from "oxfmt";
+
+export default defineConfig({
+  printWidth: 120,
+  singleQuote: false,
+  jsxSingleQuote: false,
+  trailingComma: "es5",
+  sortPackageJson: true,
+  quoteProps: "consistent",
+  arrowParens: "always",
+  semi: true,
+  sortImports: true,
+  importOrder: [
+    ".*styles.css$",
+    "",
+    "dayjs",
+    "^react$",
+    "<BUILTIN_MODULES>",
+    "<THIRD_PARTY_MODULES>",
+    "^@mantine/(.*)$",
+    "^@mantinex/(.*)$",
+    "^@mantine-tests/(.*)$",
+    "^#/.*$",
+    "^../(?!.*\\.css$).*$",
+    "^./(?!.*\\.css$).*$",
+    "\\.module\\.css$",
+    "(?<!\\.module)\\.css$",
+  ],
+  ignorePatterns: ["*.d.ts"],
+});

@@ -1,9 +1,14 @@
-import { Center, Progress } from '@mantine/core';
+import { Flex, type FlexProps, Loader } from "@mantine/core";
 
-export function LoadingScreen() {
+import { Logo } from "#/components/logo";
+
+type LoadingScreenProps = Omit<FlexProps, "children">;
+
+export function LoadingScreen(props: LoadingScreenProps) {
   return (
-    <Center h="100%">
-      <Progress radius="xl" value={100} striped animated w="80%" maw="32rem" />
-    </Center>
+    <Flex align="center" direction="column" gap="md" justify="center" {...props}>
+      <Logo c="primary" h="4rem" hiddenFrom="md" />
+      <Loader />
+    </Flex>
   );
 }

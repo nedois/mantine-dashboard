@@ -1,0 +1,13 @@
+.root {
+  &[data-variant="default"] {
+    --tabs-list-border-width: 1px;
+  }
+}
+
+.list {
+  &[data-no-border="true"] {
+    &::before {
+      display: none;
+    }
+  }
+}

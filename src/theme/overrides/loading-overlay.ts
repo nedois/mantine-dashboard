@@ -1,13 +1,15 @@
-import { LoadingOverlay } from '@mantine/core';
+import { LoadingOverlay, type MantineThemeOverride } from "@mantine/core";
 
 export default {
   LoadingOverlay: LoadingOverlay.extend({
     defaultProps: {
-      zIndex: 1000,
+      loaderProps: {
+        type: "bars",
+      },
       overlayProps: {
-        radius: 'sm',
         blur: 4,
       },
+      zIndex: 1000,
     },
   }),
-};
+} as MantineThemeOverride["components"];

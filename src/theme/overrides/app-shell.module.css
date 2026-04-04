@@ -1,0 +1,9 @@
+.root {
+  @mixin where-light {
+    --app-shell-border-color: var(--mantine-color-default-border);
+  }
+
+  @mixin where-dark {
+    --app-shell-border-color: var(--mantine-color-default-border);
+  }
+}

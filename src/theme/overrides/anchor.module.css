@@ -1,0 +1,5 @@
+.root {
+  &:hover {
+    color: var(--mantine-color-anchor) !important;
+  }
+}

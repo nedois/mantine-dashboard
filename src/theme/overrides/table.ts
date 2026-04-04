@@ -1,4 +1,4 @@
-import { Table } from '@mantine/core';
+import { type MantineThemeOverride, Table } from "@mantine/core";
 
 export default {
   Table: Table.extend({
@@ -6,4 +6,4 @@ export default {
       highlightOnHover: true,
     },
   }),
-};
+} as MantineThemeOverride["components"];

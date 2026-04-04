@@ -1,0 +1,13 @@
+.root {
+  perspective: var(--tc-perspective);
+  cursor: default;
+  min-width: 0;
+}
+
+.inner {
+  position: relative;
+  border-radius: var(--tc-radius);
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}

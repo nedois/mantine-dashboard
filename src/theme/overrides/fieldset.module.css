@@ -1,0 +1,14 @@
+.root {
+  border-color: var(--mantine-color-default-border);
+  background-color: transparent;
+
+  &[data-variant="filled"] {
+    border-color: var(--mantine-color-default-border);
+    background-color: alpha(var(--mantine-color-default-hover), 0.4);
+  }
+
+  &[data-variant="unstyled"] {
+    border-color: transparent;
+    background-color: transparent;
+  }
+}

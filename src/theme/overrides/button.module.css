@@ -1,0 +1,22 @@
+.root {
+  --button-height-xs: 30px;
+  --button-height-sm: 36px;
+  --button-height-md: 42px;
+  --button-height-lg: 46px;
+  --button-height-xl: 52px;
+
+  --button-padding-x-xs: 14px;
+  --button-padding-x-sm: 18px;
+  --button-padding-x-md: 22px;
+  --button-padding-x-lg: 24px;
+  --button-padding-x-xl: 28px;
+
+  font-weight: 500;
+  font-size: var(--mantine-font-size-sm);
+
+  transition: transform 0.1s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}

@@ -1,0 +1,25 @@
+.root {
+  &:is(h1) {
+    letter-spacing: -0.025em;
+  }
+
+  &:is(h2) {
+    letter-spacing: -0.02em;
+  }
+
+  &:is(h3) {
+    letter-spacing: -0.015em;
+  }
+
+  &:is(h4) {
+    letter-spacing: -0.01em;
+  }
+
+  &:is(h5) {
+    letter-spacing: -0.005em;
+  }
+
+  &:is(h6) {
+    letter-spacing: 0em;
+  }
+}

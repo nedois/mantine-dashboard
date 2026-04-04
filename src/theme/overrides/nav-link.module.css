@@ -1,0 +1,13 @@
+.root {
+  border-radius: var(--mantine-radius-md);
+
+  @mixin hover {
+    @mixin where-light {
+      background-color: var(--nl-hover);
+    }
+
+    @mixin where-dark {
+      background-color: var(--nl-hover);
+    }
+  }
+}

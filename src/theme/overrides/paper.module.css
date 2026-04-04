@@ -1,0 +1,11 @@
+.root {
+  --paper-border-color: var(--mantine-color-default-border);
+
+  transition: border-color 0.2s ease-in-out;
+
+  &[data-variant="highlight"] {
+    &:hover {
+      border-color: var(--mantine-color-primary-filled);
+    }
+  }
+}

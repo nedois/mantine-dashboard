@@ -1,8 +1,0 @@
-.link {
-  border-radius: var(--mantine-radius-md);
-
-  & svg {
-    height: 1.25rem;
-    width: 1.25rem;
-  }
-}
