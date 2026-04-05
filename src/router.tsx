@@ -1,3 +1,4 @@
+import { nprogress } from "@mantine/nprogress";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 
 import { LoadingScreen } from "#/components/loading-screen";
@@ -11,6 +12,16 @@ export const router = createRouter({
   defaultStructuralSharing: true,
   routeTree,
   scrollRestoration: true,
+});
+
+router.subscribe("onBeforeLoad", ({ pathChanged }) => {
+  if (pathChanged) {
+    nprogress.start();
+  }
+});
+
+router.subscribe("onLoad", () => {
+  nprogress.complete();
 });
 
 declare module "@tanstack/react-router" {

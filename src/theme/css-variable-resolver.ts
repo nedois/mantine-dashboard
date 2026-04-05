@@ -42,10 +42,10 @@ export const cssVariableResolver: CSSVariablesResolver = (theme) => {
         "--mantine-color-text": "var(--mantine-color-secondary-9)",
         "--mantine-color-body": "var(--mantine-color-white)",
         "--mantine-color-error": "var(--mantine-color-error-9)",
-        "--mantine-color-placeholder": "var(--mantine-color-secondary-9)",
+        "--mantine-color-placeholder": "var(--mantine-color-secondary-4)",
         "--mantine-color-anchor": "var(--mantine-color-primary-filled)",
 
-        "--mantine-color-default": "var(--mantine-color-secondary-0)",
+        "--mantine-color-default": `${alpha("var(--mantine-color-secondary-0)", 0.5)}`,
         "--mantine-color-default-hover": "var(--mantine-color-secondary-1)",
         "--mantine-color-default-color": "var(--mantine-color-secondary-9)",
         "--mantine-color-default-border": "var(--mantine-color-secondary-2)",

@@ -22,3 +22,14 @@ body {
 :target {
   scroll-margin-top: 90px;
 }
+
+/* DataTable */
+.mantine-datatable-header-cell-sortable-unsorted-icon,
+.mantine-datatable-header-cell-filter-action-icon {
+  color: var(--mantine-color-dimmed);
+}
+
+.mantine-datatable-header-cell-sortable-icon,
+.mantine-datatable-header-cell-filter-action-icon[data-active] {
+  color: var(--mantine-color-primary-filled);
+}
