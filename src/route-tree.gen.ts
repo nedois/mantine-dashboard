@@ -14,6 +14,8 @@ import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GuestLoginRouteImport } from './routes/_guest/login'
 import { Route as AuthOverviewRouteImport } from './routes/_auth/overview'
+import { Route as AuthComponentsTablesRouteImport } from './routes/_auth/components/tables'
+import { Route as AuthComponentsShowcaseRouteImport } from './routes/_auth/components/showcase'
 
 const GuestRoute = GuestRouteImport.update({
   id: '/_guest',
@@ -38,16 +40,30 @@ const AuthOverviewRoute = AuthOverviewRouteImport.update({
   path: '/overview',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthComponentsTablesRoute = AuthComponentsTablesRouteImport.update({
+  id: '/components/tables',
+  path: '/components/tables',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthComponentsShowcaseRoute = AuthComponentsShowcaseRouteImport.update({
+  id: '/components/showcase',
+  path: '/components/showcase',
+  getParentRoute: () => AuthRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/overview': typeof AuthOverviewRoute
   '/login': typeof GuestLoginRoute
+  '/components/showcase': typeof AuthComponentsShowcaseRoute
+  '/components/tables': typeof AuthComponentsTablesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/overview': typeof AuthOverviewRoute
   '/login': typeof GuestLoginRoute
+  '/components/showcase': typeof AuthComponentsShowcaseRoute
+  '/components/tables': typeof AuthComponentsTablesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -56,12 +72,24 @@ export interface FileRoutesById {
   '/_guest': typeof GuestRouteWithChildren
   '/_auth/overview': typeof AuthOverviewRoute
   '/_guest/login': typeof GuestLoginRoute
+  '/_auth/components/showcase': typeof AuthComponentsShowcaseRoute
+  '/_auth/components/tables': typeof AuthComponentsTablesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/overview' | '/login'
+  fullPaths:
+    | '/'
+    | '/overview'
+    | '/login'
+    | '/components/showcase'
+    | '/components/tables'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/overview' | '/login'
+  to:
+    | '/'
+    | '/overview'
+    | '/login'
+    | '/components/showcase'
+    | '/components/tables'
   id:
     | '__root__'
     | '/'
@@ -69,6 +97,8 @@ export interface FileRouteTypes {
     | '/_guest'
     | '/_auth/overview'
     | '/_guest/login'
+    | '/_auth/components/showcase'
+    | '/_auth/components/tables'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -114,15 +144,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthOverviewRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/components/tables': {
+      id: '/_auth/components/tables'
+      path: '/components/tables'
+      fullPath: '/components/tables'
+      preLoaderRoute: typeof AuthComponentsTablesRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/components/showcase': {
+      id: '/_auth/components/showcase'
+      path: '/components/showcase'
+      fullPath: '/components/showcase'
+      preLoaderRoute: typeof AuthComponentsShowcaseRouteImport
+      parentRoute: typeof AuthRoute
+    }
   }
 }
 
 interface AuthRouteChildren {
   AuthOverviewRoute: typeof AuthOverviewRoute
+  AuthComponentsShowcaseRoute: typeof AuthComponentsShowcaseRoute
+  AuthComponentsTablesRoute: typeof AuthComponentsTablesRoute
 }
 
 const AuthRouteChildren: AuthRouteChildren = {
   AuthOverviewRoute: AuthOverviewRoute,
+  AuthComponentsShowcaseRoute: AuthComponentsShowcaseRoute,
+  AuthComponentsTablesRoute: AuthComponentsTablesRoute,
 }
 
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)

@@ -29,3 +29,4 @@ export * from "./router-link";
 export * from "./searchable-combobox";
 export * from "./stack";
 export * from "./table-container";
+export * from "./data-table";

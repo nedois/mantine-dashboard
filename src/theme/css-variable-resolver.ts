@@ -49,7 +49,7 @@ export const cssVariableResolver: CSSVariablesResolver = (theme) => {
         "--mantine-color-default-hover": "var(--mantine-color-secondary-1)",
         "--mantine-color-default-color": "var(--mantine-color-secondary-9)",
         "--mantine-color-default-border": "var(--mantine-color-secondary-2)",
-        "--mantine-color-dimmed": "var(--mantine-color-secondary-9)",
+        "--mantine-color-dimmed": "var(--mantine-color-secondary-4)",
       },
       ...Object.keys(theme.colors).map((color) => getCSSColorVariables(theme, color, "light"))
     ),

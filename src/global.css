@@ -8,6 +8,7 @@
 @import "@mantine/nprogress/styles.layer.css";
 @import "@mantine/spotlight/styles.layer.css";
 @import "@mantine/tiptap/styles.layer.css";
+@import "mantine-datatable/styles.layer.css";
 
 html {
   height: 100%;

@@ -13,7 +13,7 @@ export function PageHeader({ breadcrumbs, children, mb = "xl", title, ...props }
   return (
     <Group component="header" justify="space-between" mb={mb} {...props}>
       <div>
-        <Title fz="2xl" order={2}>
+        <Title fz="3xl" order={2}>
           {title}
         </Title>
         {breadcrumbs && <Breadcrumbs items={breadcrumbs} mt="xs" />}

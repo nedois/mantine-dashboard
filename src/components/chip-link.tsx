@@ -9,5 +9,5 @@ export interface ChipLinkProps extends Omit<ChipProps, "checked" | "wrapperProps
 }
 
 export function ChipLink({ href, ref, ...props }: ChipLinkProps) {
-  return <Chip {...props} {...(href ? ({ component: RouterLink, ref, to: href } as any) : { ref })} checked={false} />;
+  return <Chip {...props} {...(href ? { component: RouterLink, ref, to: href } : { ref })} checked={false} />;
 }

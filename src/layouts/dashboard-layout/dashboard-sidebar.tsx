@@ -15,27 +15,17 @@ const sections: Array<SidebarSectionProps> = [
     ],
   },
   {
-    header: "Comercial",
+    header: "Components",
     items: [
       {
-        href: "/policies",
-        icon: <Icon h="1rem" icon="lucide:file-badge" />,
-        label: "Apólices",
+        href: "/components/showcase",
+        icon: <Icon h="1rem" icon="lucide:palette" />,
+        label: "Showcase",
       },
       {
-        href: "/policyholders",
-        icon: <Icon h="1rem" icon="lucide:users" />,
-        label: "Tomadores",
-      },
-    ],
-  },
-  {
-    header: "Técnico",
-    items: [
-      {
-        href: "/settings",
-        icon: <Icon h="1rem" icon="lucide:settings" />,
-        label: "Definições",
+        href: "/components/tables",
+        icon: <Icon h="1rem" icon="lucide:table" />,
+        label: "Tables",
       },
     ],
   },

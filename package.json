@@ -18,6 +18,7 @@
     "fmt:check": "oxfmt --check"
   },
   "dependencies": {
+    "@faker-js/faker": "^10.4.0",
     "@iconify/react": "^6.0.2",
     "@mantine/carousel": "^9.0.0",
     "@mantine/charts": "^9.0.0",
@@ -32,11 +33,13 @@
     "@mantine/nprogress": "^9.0.0",
     "@mantine/spotlight": "^9.0.0",
     "@mantine/tiptap": "^9.0.0",
+    "@msw/data": "^1.1.2",
     "@tanstack/react-devtools": "^0.10.1",
     "@tanstack/react-query": "^5.96.2",
     "@tanstack/react-query-devtools": "^5.96.2",
     "@tanstack/react-router": "^1.168.10",
     "@tanstack/react-router-devtools": "^1.166.11",
+    "@tanstack/react-table": "^8.21.3",
     "@tiptap/extension-link": "^3.22.1",
     "@tiptap/pm": "^3.22.1",
     "@tiptap/react": "^3.22.1",
@@ -45,11 +48,15 @@
     "dayjs": "^1.11.20",
     "embla-carousel": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
+    "ky": "^1.14.3",
+    "mantine-datatable": "^8.3.13",
     "motion": "^12.38.0",
+    "msw": "^2.12.14",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "recharts": "^3.8.1",
     "ts-pattern": "^5.9.0",
+    "uuid": "^13.0.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
@@ -73,5 +80,10 @@
     "vite": "^8.0.3",
     "vitest": "^4.1.2"
   },
-  "packageManager": "pnpm@10.32.1"
+  "packageManager": "pnpm@10.32.1",
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
 }

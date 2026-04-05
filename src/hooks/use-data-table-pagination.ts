@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-export interface UsePaginationProps {
+export interface UseDataTablePaginationProps {
   initialPage?: number;
   initialPerPage?: number;
 }
 
-export function usePagination({ initialPage = 1, initialPerPage = 25 }: UsePaginationProps = {}) {
+export function useDataTablePagination({ initialPage = 1, initialPerPage = 25 }: UseDataTablePaginationProps = {}) {
   const [page, setPage] = useState(initialPage);
   const [perPage, setPerPage] = useState(initialPerPage);
 

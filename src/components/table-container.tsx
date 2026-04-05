@@ -23,7 +23,7 @@ export function TableContainer({
   return (
     <Card {...props}>
       {title && (
-        <CardHeader description={description} title={title} withBorder>
+        <CardHeader description={description} title={title}>
           {actions}
         </CardHeader>
       )}
