@@ -30,7 +30,7 @@ A simple beautiful dashboard! This project is built using [Mantine](https://mant
 
 ## Demo
 
-Check out the live demo [here](https://mantine-dashboard-eight.vercel.app).
+Check out the v1 live demo [here](https://v1.mantidash.nedois.com/).
 
 ## Todo
 
